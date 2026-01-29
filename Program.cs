@@ -27,11 +27,6 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 
-using Newtonsoft.Json;
-using Opc.Ua.Cloud.Client.Models;
-using System.Globalization;
-using System.Text;
-
 [assembly: CLSCompliant(false)]
 namespace Opc.Ua.Data.Processor
 {
@@ -39,12 +34,12 @@ namespace Opc.Ua.Data.Processor
     {
         static async Task Main()
         {
-            ProductCarbonFootprintService pcfService = new ProductCarbonFootprintService();
+            PCFProcessor pcfProcessor = new PCFProcessor();
             while (true)
             {
                 try
                 {
-                    pcfService.GeneratePCFs();
+                    pcfProcessor.Process();
                     await Task.Delay(5000).ConfigureAwait(false); // Wait 5s before next processing
                 }
                 catch (Exception ex)

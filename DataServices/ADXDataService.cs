@@ -3,17 +3,17 @@ using Azure.Identity;
 using Kusto.Data;
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
-using System.Collections.Concurrent;
 using System.Data;
 using System.Diagnostics;
+using UA_DataProcessor.Interfaces;
 
 namespace Opc.Ua.Data.Processor
 {
-    public class ADXDataService : IDisposable
+    public class ADXDataService : IDataService
     {
         private ICslQueryProvider _queryProvider = null;
 
-        public ADXDataService()
+        public void Connect()
         {
             // connect to ADX cluster
             string adxClusterName = Environment.GetEnvironmentVariable("ADX_HOST");
@@ -47,8 +47,11 @@ namespace Opc.Ua.Data.Processor
             }
         }
 
-        public void RunADXQuery(string query, ConcurrentDictionary<string, object> values, bool allowMultiRow = false)
+        public Dictionary<string, object> RunQuery(string query)
         {
+            bool allowMultiRow = false;
+            Dictionary<string, object> values = new();
+
             ClientRequestProperties clientRequestProperties = new ClientRequestProperties()
             {
                 ClientRequestId = Guid.NewGuid().ToString()
@@ -107,6 +110,8 @@ namespace Opc.Ua.Data.Processor
             {
                 Console.WriteLine("RunADXQuery: " + ex.Message);
             }
+
+            return values;
         }
     }
 }

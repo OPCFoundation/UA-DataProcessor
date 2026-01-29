@@ -4,10 +4,11 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
+using UA_DataProcessor.Interfaces;
 
 namespace Opc.Ua.Data.Processor
 {
-    public class DynamicsDataService : IDisposable
+    public class DynamicsDataService : IDataService
     {
         private HttpClient _client = null;
 
@@ -17,7 +18,7 @@ namespace Opc.Ua.Data.Processor
         private string _tenantId = string.Empty;
         private string _environmentId = string.Empty;
 
-        public DynamicsDataService()
+        public void Connect()
         {
             _client = new();
 
@@ -83,8 +84,21 @@ namespace Opc.Ua.Data.Processor
             }
         }
 
-        public async Task<DynamicsQueryResponse> RunDynamicsQuery(DynamicsQuery query)
+        public Dictionary<string, object> RunQuery(string query)
         {
+            Dictionary<string, object> results = new();
+
+            string[] queryLines = query.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
+            DynamicsQuery queryRequest = new()
+            {
+                tracingDirection = queryLines.Length > 0 ? queryLines[0] : string.Empty,
+                company = queryLines.Length > 1 ? queryLines[1] : string.Empty,
+                itemNumber = queryLines.Length > 2 ? queryLines[2] : string.Empty,
+                batchNumber = queryLines.Length > 3 ? queryLines[3] : string.Empty,
+                serialNumber = queryLines.Length > 4 ? queryLines[4] : string.Empty,
+                shouldIncludeEvents = true
+            };
+
             if (!string.IsNullOrEmpty(_instanceEndpoint))
             {
                 try
@@ -109,7 +123,7 @@ namespace Opc.Ua.Data.Processor
                         Debug.WriteLine("Bearer Token expired! Attempting to retrieve a new barer token.");
 
                         // re-authorize
-                        await Authorize().ConfigureAwait(false);
+                        Authorize().GetAwaiter().GetResult();
 
                         // re-try our data request, using the updated bearer token
                         response = _client.Send(
@@ -131,18 +145,15 @@ namespace Opc.Ua.Data.Processor
                         throw new Exception(response.StatusCode.ToString());
                     }
 
-                    return JsonConvert.DeserializeObject<DynamicsQueryResponse>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                    results.Add(query, JsonConvert.DeserializeObject<DynamicsQueryResponse>(response.Content.ReadAsStringAsync().GetAwaiter().GetResult()));
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("RunDynamicsQuery: " + ex.Message);
-                    return null;
                 }
             }
-            else
-            {
-                return null;
-            }
+
+            return results;
         }
     }
 }
