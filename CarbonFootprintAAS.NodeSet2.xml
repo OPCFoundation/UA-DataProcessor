@@ -1,143 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <UANodeSet LastModified="2026-02-02T09:43:14.193Z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd" xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd" xmlns:si="http://www.siemens.com/OPCUA/2017/SimaticNodeSetExtensions" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <NamespaceUris>
-        <Uri>http://industrialdigitaltwin.org/UA/CarbonFootprintAAS/</Uri>
-    </NamespaceUris>
-    <Models>
-        <Model ModelUri="http://industrialdigitaltwin.org/UA/CarbonFootprintAAS/" PublicationDate="2025-03-19T12:32:35Z" Version="0.4.0">
-            <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2021-09-15T00:00:00Z" Version="1.04.10"/>
-        </Model>
-    </Models>
-    <Aliases>
-        <Alias Alias="String">i=12</Alias>
-        <Alias Alias="HasComponent">i=47</Alias>
-        <Alias Alias="HasTypeDefinition">i=40</Alias>
-    </Aliases>
-    <Extensions>
-        <Extension>
-            <si:Generator Product="SiOME" Edition="Standard" Version="2.8.5-installer"/>
-        </Extension>
-        <Extension>
-            <si:GeneratorExtension Hash="32263d37d888d5bcf792768d658c9017"/>
-        </Extension>
-    </Extensions>
-    <UAObject NodeId="ns=1;i=2" BrowseName="DigitalProductPassport" ParentNodeId="i=85">
-        <DisplayName>DigitalProductPassport</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">i=85</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-        </References>
-    </UAObject>
-    <UAObject NodeId="ns=1;i=7" BrowseName="CarbonFootprint" ParentNodeId="ns=1;i=2">
-        <DisplayName>CarbonFootprint</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=2</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-        </References>
-    </UAObject>
-    <UAObject NodeId="ns=1;i=8" BrowseName="ProductCarbonFootprint" ParentNodeId="ns=1;i=7">
-        <DisplayName>ProductCarbonFootprint</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=7</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-        </References>
-    </UAObject>
-    <UAVariable DataType="String" NodeId="ns=1;i=9" BrowseName="1:PCFCalculationMethod" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>PCFCalculationMethod</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=10" BrowseName="1:PCFCO2eq" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>PCFCO2eq</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=11" BrowseName="1:PCFReferenceValueForCalculation" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>PCFReferenceValueForCalculation</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=12" BrowseName="1:PCFQuantityOfMeasureForCalculation" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>PCFQuantityOfMeasureForCalculation</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=13" BrowseName="1:PCFLifeCyclePhase" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>PCFLifeCyclePhase</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=14" BrowseName="1:ExplanatoryStatement" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>ExplanatoryStatement</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAObject NodeId="ns=1;i=15" BrowseName="PCFGoodsAddressHandover" ParentNodeId="ns=1;i=8">
-        <DisplayName>PCFGoodsAddressHandover</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=61</Reference>
-        </References>
-    </UAObject>
-    <UAVariable DataType="String" NodeId="ns=1;i=16" BrowseName="1:Street" ParentNodeId="ns=1;i=15" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>Street</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=17" BrowseName="1:HouseNumber" ParentNodeId="ns=1;i=15" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>HouseNumber</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=18" BrowseName="1:ZipCode" ParentNodeId="ns=1;i=15" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>ZipCode</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=19" BrowseName="1:CityTown" ParentNodeId="ns=1;i=15" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>CityTown</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=20" BrowseName="1:Country" ParentNodeId="ns=1;i=15" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>Country</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=15</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=21" BrowseName="1:PublicationDate" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>PublicationDate</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
-    <UAVariable DataType="String" NodeId="ns=1;i=22" BrowseName="1:ExpirationDate" ParentNodeId="ns=1;i=8" UserAccessLevel="3" AccessLevel="3" WriteMask="2097152" UserWriteMask="2097152">
-        <DisplayName>ExpirationDate</DisplayName>
-        <References>
-            <Reference ReferenceType="HasComponent" IsForward="false">ns=1;i=8</Reference>
-            <Reference ReferenceType="HasTypeDefinition">i=63</Reference>
-        </References>
-    </UAVariable>
+  <NamespaceUris>
+    <Uri>http://industrialdigitaltwin.org/UA/CarbonFootprintAAS/</Uri>
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri="http://industrialdigitaltwin.org/UA/CarbonFootprintAAS/" PublicationDate="2025-03-19T12:32:35Z" Version="0.4.0">
+      <RequiredModel ModelUri="http://opcfoundation.org/UA/" PublicationDate="2021-09-15T00:00:00Z" Version="1.04.10"/>
+    </Model>
+  </Models>
+  <Aliases>
+    <Alias Alias="String">i=12</Alias>
+    <Alias Alias="HasComponent">i=47</Alias>
+    <Alias Alias="HasTypeDefinition">i=40</Alias>
+  </Aliases>
+  <UAObject NodeId="ns=1;i=2" BrowseName="DigitalProductPassport" ParentNodeId="i=85">
+    <DisplayName>DigitalProductPassport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=7</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">i=85</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=7" BrowseName="CarbonFootprint" ParentNodeId="ns=1;i=2">
+    <DisplayName>CarbonFootprint</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=8</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=2</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=8" BrowseName="ProductCarbonFootprint" ParentNodeId="ns=1;i=7">
+    <DisplayName>ProductCarbonFootprint</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=9</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=10</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=11</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=12</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=13</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=14</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=15</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=21</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=22</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=7</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=9" BrowseName="1:PCFCalculationMethod" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">PCFCalculationMethod</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=10" BrowseName="1:PCFCO2eq" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">PCFCO2eq</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=11" BrowseName="1:PCFReferenceValueForCalculation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">PCFReferenceValueForCalculation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=12" BrowseName="1:PCFQuantityOfMeasureForCalculation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">PCFQuantityOfMeasureForCalculation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=13" BrowseName="1:PCFLifeCyclePhase" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">PCFLifeCyclePhase</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=14" BrowseName="1:ExplanatoryStatement" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ExplanatoryStatement</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=15" BrowseName="PCFGoodsAddressHandover" ParentNodeId="ns=1;i=8">
+    <DisplayName>PCFGoodsAddressHandover</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=16</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=17</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=18</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=19</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=20</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=16" BrowseName="1:Street" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=15" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">Street</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=15</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=17" BrowseName="1:HouseNumber" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=15" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">HouseNumber</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=15</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=18" BrowseName="1:ZipCode" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=15" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ZipCode</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=15</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=19" BrowseName="1:CityTown" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=15" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">CityTown</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=15</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=20" BrowseName="1:Country" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=15" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">Country</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=15</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=21" BrowseName="1:PublicationDate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">PublicationDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=22" BrowseName="1:ExpirationDate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=8" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ExpirationDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAVariable>
 </UANodeSet>
