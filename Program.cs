@@ -35,11 +35,15 @@ namespace Opc.Ua.Data.Processor
         static async Task Main()
         {
             PCFProcessor pcfProcessor = new PCFProcessor();
+            BatteryPassProcessor batteryPassProcessor = new BatteryPassProcessor();
             while (true)
             {
                 try
                 {
                     pcfProcessor.Process();
+
+                    batteryPassProcessor.Process();
+
                     await Task.Delay(5000).ConfigureAwait(false); // Wait 5s before next processing
                 }
                 catch (Exception ex)

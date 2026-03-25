@@ -7,10 +7,9 @@ using System.Text;
 
 namespace Opc.Ua.Data.Processor
 {
-    public class PCFProcessor
+    public class BatteryPassProcessor
     {
         private readonly ADXDataService _adxDataService = new ADXDataService();
-        private readonly DynamicsDataService _dynamicsDataService = new DynamicsDataService();
         private readonly HttpClient _webClient = new HttpClient()
         {
             BaseAddress = new Uri(Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_URL")),
@@ -20,10 +19,9 @@ namespace Opc.Ua.Data.Processor
             }
         };
 
-        public PCFProcessor()
+        public BatteryPassProcessor()
         {
             _adxDataService.Connect();
-            _dynamicsDataService.Connect();
         }
 
         public void Process()
@@ -63,20 +61,11 @@ namespace Opc.Ua.Data.Processor
                         // calculate the total energy consumption for the product by summing up all the machines' energy consumptions (in Ws), divide by 3600 to get seconds and multiply by the ideal cycle time (which is in seconds)
                         double energyTotal = ((double)energyAssembly["OPCUANodeValue"] + (double)energyTest["OPCUANodeValue"] + (double)energyPackaging["OPCUANodeValue"]) / 3600 * idealCycleTime;
 
-                        // we set scope 1 emissions to 0
-                        float scope1Emissions = 0.0f;
-
                         // finally calculate the scope 2 product carbon footprint by multiplying the full energy consumption by the current carbon intensity
                         float scope2Emissions = (float)energyTotal * currentCarbonIntensity.data[0].intensity.actual;
 
-                        // we get scope 3 emissions from Dynamics as part of the Bill of Material (BoM)
-                        float scope3Emissions = RetrieveScope3Emissions();
-
-                        // finally calculate our PCF
-                        float pcf = scope1Emissions + scope2Emissions + scope3Emissions;
-
                         // persist in Cloud Library
-                        PersistInCloudLibrary(productionLineName, serialNumber, pcf);
+                        PersistInCloudLibrary(productionLineName, serialNumber, scope2Emissions);
                     }
                 }
             }
@@ -88,7 +77,7 @@ namespace Opc.Ua.Data.Processor
 
         private void PersistInCloudLibrary(string productionLineName, double serialNumber, float pcf)
         {
-            string dppName = "CarbonFootprintAAS_" + productionLineName + "_" + serialNumber.ToString();
+            string dppName = "BatteryPassV6_" + productionLineName + "_" + serialNumber.ToString();
 
             // write the values to a JSON file
             Dictionary<string, string> values = new() {
@@ -113,8 +102,7 @@ namespace Opc.Ua.Data.Processor
                 CopyrightText = "OPC Foundation",
                 Description = "Sample PCF for Digital Twin Consortium production line simulation"
             };
-            nameSpace.Nodeset.NodesetXml = File.ReadAllText("./CarbonFootprintAAS.NodeSet2.xml").Replace("CarbonFootprintAAS", dppName);
-
+            nameSpace.Nodeset.NodesetXml = File.ReadAllText("./BatteryPassV6.NodeSet2.xml").Replace("BatteryPassV6", dppName);
             var url = QueryHelpers.AddQueryString(
                 _webClient.BaseAddress.AbsoluteUri + "infomodel/upload",
                 new Dictionary<string, string> {
@@ -130,41 +118,15 @@ namespace Opc.Ua.Data.Processor
 
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Error uploading PCF to Cloud Library: " + response.StatusCode.ToString());
+                Console.WriteLine("Error uploading BatteryPass to Cloud Library: " + response.StatusCode.ToString());
             }
             else
             {
-                Console.WriteLine("Successfully uploaded PCF to Cloud Library for " + dppName);
+                Console.WriteLine("Successfully uploaded BatteryPass to Cloud Library for " + dppName);
             }
         }
 
-        private float RetrieveScope3Emissions()
-        {
-            try
-            {
-                string query = "Backward" + "\r\n"
-                    + Environment.GetEnvironmentVariable("DYNAMICS_COMPANY_NAME") + "\r\n"
-                    + Environment.GetEnvironmentVariable("DYNAMICS_PRODUCT_NAME") + "\r\n"
-                    + Environment.GetEnvironmentVariable("DYNAMICS_BATCH_NAME") + "\r\n";
-
-                Dictionary<string, object> response = _dynamicsDataService.RunQuery(query);
-                if (response.ContainsKey(query) && (response[query] != null) && response[query] is DynamicsQueryResponse dynamicsResponse)
-                {
-                    return FindPcf(dynamicsResponse.root);
-                }
-                else
-                {
-                    return 0.0f;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("RetrieveScope3Emissions: " + ex.Message);
-                return 0.0f;
-            }
-        }
-
-        private float FindPcf(ErpNode node)
+       private float FindPcf(ErpNode node)
         {
             if (node.events != null)
             {

@@ -1,0 +1,2018 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2026-03-25T10:18:34.7841065Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris>
+    <Uri>http://catena-x.org/UA/BatteryPassV6/</Uri>
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri="http://catena-x.org/UA/BatteryPassV6/" Version="0.9.0" PublicationDate="2026-03-25T00:00:00Z" />
+  </Models>
+  <UAVariable NodeId="ns=1;i=55" BrowseName="1:state" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=48" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">state</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=25" BrowseName="operation" ParentNodeId="ns=1;i=9">
+    <DisplayName>operation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=26</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=27</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=26" BrowseName="1:intoServiceDate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=25" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">intoServiceDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=25</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=27" BrowseName="manufacturer" ParentNodeId="ns=1;i=25">
+    <DisplayName>manufacturer</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=28</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=29</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=30</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=25</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=28" BrowseName="1:facilityIdentification" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=27" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">facilityIdentification</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=27</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=29" BrowseName="1:manufacturerIdentification" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=27" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">manufacturerIdentification</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=27</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=30" BrowseName="1:manufacturingDate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=27" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">manufacturingDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=27</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=99" BrowseName="1:impactOfSubstances" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">impactOfSubstances</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=64" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=63" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=242" BrowseName="commercial" ParentNodeId="ns=1;i=9">
+    <DisplayName>commercial</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=243</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=244</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=243" BrowseName="1:placedOnMarket" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=242" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">placedOnMarket</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=242</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=244" BrowseName="1:purpose" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=242" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">purpose</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=242</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=114" BrowseName="ratedRoundTripEfficiency" ParentNodeId="ns=1;i=108">
+    <DisplayName>ratedRoundTripEfficiency</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=115</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=116</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=117</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=118</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=115" BrowseName="1:depthOfDischarge" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=114" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">depthOfDischarge</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=114</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=116" BrowseName="1:initialRoundTripEfficiency" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=114" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">initialRoundTripEfficiency</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=114</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=117" BrowseName="1:roundTripEfficiency50Percent" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=114" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">roundTripEfficiency50Percent</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=114</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=118" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=114" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=114</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=74" BrowseName="1:impactOfSubstances" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">impactOfSubstances</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=238" BrowseName="1:predecessor" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">predecessor</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=53" BrowseName="1:sustainabilityReport" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=49" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">sustainabilityReport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=49</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=16" BrowseName="1:batchInformation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=14" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">batchInformation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=236" BrowseName="1:economicOperatorId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">economicOperatorId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=196" BrowseName="remainingPackResistance" ParentNodeId="ns=1;i=195">
+    <DisplayName>remainingPackResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=197</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=198</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=195</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=197" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=196" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=196</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=198" BrowseName="1:remainingResistanceValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=196" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">remainingResistanceValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=196</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=162" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=161" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=161</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=6" BrowseName="1:EconomicOperatorId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">EconomicOperatorId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=167" BrowseName="dynamicCapacity" ParentNodeId="ns=1;i=151">
+    <DisplayName>dynamicCapacity</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=168</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=171</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=174</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=168" BrowseName="capacityFade" ParentNodeId="ns=1;i=167">
+    <DisplayName>capacityFade</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=169</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=170</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=167</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=169" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=168" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=168</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=170" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=168" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=168</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=171" BrowseName="capacityThroughput" ParentNodeId="ns=1;i=167">
+    <DisplayName>capacityThroughput</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=172</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=173</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=167</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=172" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=171" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=171</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=173" BrowseName="1:capacityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=171" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">capacityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=171</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=174" BrowseName="remainingCapacity" ParentNodeId="ns=1;i=167">
+    <DisplayName>remainingCapacity</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=175</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=176</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=167</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=175" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=174" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=174</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=176" BrowseName="1:capacityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=174" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">capacityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=174</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=129" BrowseName="1:capabilityAt20SoC" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=127" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">capabilityAt20SoC</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=127</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=59" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=58" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=58</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=49" BrowseName="sustainabilityDocuments" ParentNodeId="ns=1;i=48">
+    <DisplayName>sustainabilityDocuments</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=50</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=51</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=52</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=53</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=50" BrowseName="1:separateCollection" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=49" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">separateCollection</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=49</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=51" BrowseName="1:wastePrevention" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=49" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">wastePrevention</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=49</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=52" BrowseName="1:euTaxonomyDisclosureStatement" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=49" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">euTaxonomyDisclosureStatement</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=49</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=235" BrowseName="1:issueDate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">issueDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=10" BrowseName="identification" ParentNodeId="ns=1;i=9">
+    <DisplayName>identification</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=11</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=12</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=13</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=14</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=11" BrowseName="1:batteryCategory" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=10" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">batteryCategory</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=12" BrowseName="1:idDmc" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=10" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">idDmc</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=13" BrowseName="1:batteryChemistry" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=10" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">batteryChemistry</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=14" BrowseName="identification" ParentNodeId="ns=1;i=10">
+    <DisplayName>identification</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=15</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=16</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=17</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=20</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=21</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=24</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=15" BrowseName="1:serialInformation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=14" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">serialInformation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=17" BrowseName="partTypeInformation" ParentNodeId="ns=1;i=14">
+    <DisplayName>partTypeInformation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=18</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=19</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=18" BrowseName="1:manufacturerPartId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=17" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">manufacturerPartId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=17</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=19" BrowseName="1:nameAtManufacturer" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=17" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">nameAtManufacturer</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=17</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=20" BrowseName="1:codes" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=14" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">codes</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=21" BrowseName="dataCarrier" ParentNodeId="ns=1;i=14">
+    <DisplayName>dataCarrier</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=22</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=23</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=22" BrowseName="1:carrierType" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=21" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">carrierType</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=21</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=23" BrowseName="1:carrierLayout" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=21" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">carrierLayout</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=21</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=24" BrowseName="1:partClassification" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=14" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">partClassification</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=14</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=206" BrowseName="soce" ParentNodeId="ns=1;i=205">
+    <DisplayName>soce</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=207</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=208</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=205</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=207" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=206" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=206</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=208" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=206" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=206</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=102" BrowseName="1:recycled" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">recycled</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=140" BrowseName="1:selfDischargingRate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=108" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">selfDischargingRate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=57" BrowseName="activeMaterials" ParentNodeId="ns=1;i=56">
+    <DisplayName>activeMaterials</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=58</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=63</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=68</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=73</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=81</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=56</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=58" BrowseName="nickel" ParentNodeId="ns=1;i=57">
+    <DisplayName>nickel</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=59</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=60</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=61</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=62</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=60" BrowseName="1:recycled" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=58" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">recycled</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=58</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=61" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=58" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=58</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=62" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=58" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=58</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=63" BrowseName="lithium" ParentNodeId="ns=1;i=57">
+    <DisplayName>lithium</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=64</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=65</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=66</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=67</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=65" BrowseName="1:recycled" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=63" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">recycled</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=66" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=63" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=67" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=63" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=63</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=68" BrowseName="cobalt" ParentNodeId="ns=1;i=57">
+    <DisplayName>cobalt</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=69</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=70</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=71</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=72</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=69" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=68" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=70" BrowseName="1:recycled" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=68" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">recycled</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=71" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=68" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=72" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=68" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=68</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=73" BrowseName="lead" ParentNodeId="ns=1;i=57">
+    <DisplayName>lead</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=74</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=75</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=76</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=77</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=78</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=79</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=80</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=75" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=76" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=77" BrowseName="1:recycled" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">recycled</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=78" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=79" BrowseName="1:concentration" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">concentration</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=80" BrowseName="1:materialUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=73" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">materialUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=73</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=81" BrowseName="1:otherActiveMaterials" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=57" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">otherActiveMaterials</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=57</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=224" BrowseName="1:usableExtinguishAgent" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=223" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">usableExtinguishAgent</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=223</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=111" BrowseName="1:maxVoltage" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=109" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">maxVoltage</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=109</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=48" BrowseName="sustainability" ParentNodeId="ns=1;i=9">
+    <DisplayName>sustainability</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=49</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=54</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=55</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=54" BrowseName="1:carbonFootprint" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=48" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">carbonFootprint</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=204" BrowseName="1:remainingResistanceValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=202" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">remainingResistanceValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=202</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=227" BrowseName="1:safeDischarging" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=223" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">safeDischarging</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=223</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=219" BrowseName="1:declarationOfConformity" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=217" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">declarationOfConformity</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=217</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=97" BrowseName="1:otherHazardousMaterial" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=82" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">otherHazardousMaterial</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=82</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=112" BrowseName="1:nominalVoltage" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=109" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">nominalVoltage</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=109</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=199" BrowseName="remainingModuleResistance" ParentNodeId="ns=1;i=195">
+    <DisplayName>remainingModuleResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=200</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=201</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=195</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=200" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=199" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=199</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=201" BrowseName="1:remainingResistanceValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=199" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">remainingResistanceValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=199</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=234" BrowseName="1:expirationDate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">expirationDate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=45" BrowseName="weight" ParentNodeId="ns=1;i=35">
+    <DisplayName>weight</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=46</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=47</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=35</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=46" BrowseName="1:quantityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=45" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">quantityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=45</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=47" BrowseName="1:massUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=45" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">massUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=45</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=216" BrowseName="1:operatingEnvironment" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=151" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">operatingEnvironment</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=214" BrowseName="1:energyValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=212" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">energyValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=212</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=159" BrowseName="1:selfDischargingRate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=151" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">selfDischargingRate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=92" BrowseName="1:concentration" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=90" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">concentration</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=90</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=39" BrowseName="length" ParentNodeId="ns=1;i=35">
+    <DisplayName>length</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=40</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=41</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=35</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=40" BrowseName="1:quantityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=39" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">quantityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=39</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=41" BrowseName="1:linearUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=39" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">linearUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=39</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=120" BrowseName="1:energyValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=119" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">energyValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=119</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=183" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=181" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=181</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=166" BrowseName="1:powerValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=164" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">powerValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=164</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=37" BrowseName="1:quantityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=36" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">quantityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=36</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=100" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=88" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=83" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=83</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=209" BrowseName="remainingEnergy" ParentNodeId="ns=1;i=205">
+    <DisplayName>remainingEnergy</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=210</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=211</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=205</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=210" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=209" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=209</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=211" BrowseName="1:energyValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=209" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">energyValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=209</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=119" BrowseName="ratedEnergy" ParentNodeId="ns=1;i=108">
+    <DisplayName>ratedEnergy</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=120</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=121</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=121" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=119" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=119</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=155" BrowseName="fullCycles" ParentNodeId="ns=1;i=151">
+    <DisplayName>fullCycles</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=156</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=157</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=156" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=155" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=155</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=157" BrowseName="1:cycles" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=155" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">cycles</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=155</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=142" BrowseName="lifetime" ParentNodeId="ns=1;i=108">
+    <DisplayName>lifetime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=143</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=144</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=145</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=143" BrowseName="1:expectedYears" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=142" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">expectedYears</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=142</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=144" BrowseName="1:testReport" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=142" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testReport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=142</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=145" BrowseName="cycleLifeTesting" ParentNodeId="ns=1;i=142">
+    <DisplayName>cycleLifeTesting</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=146</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=147</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=148</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=149</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=150</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=142</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=146" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=145" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=145</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=147" BrowseName="1:cycles" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=145" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">cycles</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=145</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=148" BrowseName="1:depthOfDischarge" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=145" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">depthOfDischarge</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=145</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=149" BrowseName="1:appliedChargeRate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=145" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">appliedChargeRate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=145</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=150" BrowseName="1:appliedDischargeRate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=145" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">appliedDischargeRate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=145</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=95" BrowseName="1:critical" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=90" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">critical</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=90</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=247" BrowseName="1:sparePartSources" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=246" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">sparePartSources</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=246</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=218" BrowseName="1:declarationOfConformityId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=217" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">declarationOfConformityId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=217</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=105" BrowseName="1:materialUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">materialUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=189" BrowseName="moduleResistanceIncrease" ParentNodeId="ns=1;i=185">
+    <DisplayName>moduleResistanceIncrease</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=190</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=191</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=185</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=190" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=189" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=189</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=191" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=189" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=189</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=137" BrowseName="performanceTemperature" ParentNodeId="ns=1;i=108">
+    <DisplayName>performanceTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=138</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=139</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=138" BrowseName="1:lowerTemperatureBoundary" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=137" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">lowerTemperatureBoundary</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=137</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=139" BrowseName="1:upperTemperatureBoundary" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=137" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">upperTemperatureBoundary</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=137</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=9" BrowseName="BatteryPass" ParentNodeId="ns=1;i=8">
+    <DisplayName>BatteryPass</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=10</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=25</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=31</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=48</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=56</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=107</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=217</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=223</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=230</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=231</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=242</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=245</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=8</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=31" BrowseName="characteristics" ParentNodeId="ns=1;i=9">
+    <DisplayName>characteristics</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=32</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=35</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=32" BrowseName="warranty" ParentNodeId="ns=1;i=31">
+    <DisplayName>warranty</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=33</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=34</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=31</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=33" BrowseName="1:lifeValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=32" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">lifeValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=32</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=34" BrowseName="1:lifeUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=32" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">lifeUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=32</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=35" BrowseName="physicalDimension" ParentNodeId="ns=1;i=31">
+    <DisplayName>physicalDimension</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=36</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=39</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=42</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=45</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=31</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=36" BrowseName="height" ParentNodeId="ns=1;i=35">
+    <DisplayName>height</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=37</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=38</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=35</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=38" BrowseName="1:linearUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=36" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">linearUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=36</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=42" BrowseName="width" ParentNodeId="ns=1;i=35">
+    <DisplayName>width</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=43</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=44</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=35</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=43" BrowseName="1:quantityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=42" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">quantityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=42</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=44" BrowseName="1:linearUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=42" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">linearUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=42</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=56" BrowseName="materials" ParentNodeId="ns=1;i=9">
+    <DisplayName>materials</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=57</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=82</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=106</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=82" BrowseName="hazardousSubstance" ParentNodeId="ns=1;i=56">
+    <DisplayName>hazardousSubstance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=83</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=90</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=97</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=98</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=56</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=83" BrowseName="hazardousCadmium" ParentNodeId="ns=1;i=82">
+    <DisplayName>hazardousCadmium</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=84</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=85</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=86</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=87</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=88</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=89</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=82</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=84" BrowseName="1:impactOfSubstances" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=83" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">impactOfSubstances</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=83</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=85" BrowseName="1:concentration" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=83" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">concentration</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=83</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=86" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=83" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=83</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=87" BrowseName="1:materialUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=83" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">materialUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=83</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=89" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=83" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=83</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=90" BrowseName="hazardousMercury" ParentNodeId="ns=1;i=82">
+    <DisplayName>hazardousMercury</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=91</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=92</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=93</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=94</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=95</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=96</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=82</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=91" BrowseName="1:impactOfSubstances" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=90" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">impactOfSubstances</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=90</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=93" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=90" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=90</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=94" BrowseName="1:materialUnit" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=90" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">materialUnit</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=90</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=96" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=90" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=90</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=98" BrowseName="lead" ParentNodeId="ns=1;i=82">
+    <DisplayName>lead</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=99</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=100</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=101</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=102</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=103</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=104</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=105</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=82</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=101" BrowseName="1:documentation" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">documentation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=103" BrowseName="1:location" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">location</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=104" BrowseName="1:concentration" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=98" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">concentration</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=98</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=106" BrowseName="1:materialComposition" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=56" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">materialComposition</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=56</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=107" BrowseName="performance" ParentNodeId="ns=1;i=9">
+    <DisplayName>performance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=108</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=151</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=108" BrowseName="ratedPerformance" ParentNodeId="ns=1;i=107">
+    <DisplayName>ratedPerformance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=109</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=114</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=119</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=122</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=127</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=132</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=136</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=137</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=140</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=141</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=142</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=107</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=109" BrowseName="voltage" ParentNodeId="ns=1;i=108">
+    <DisplayName>voltage</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=110</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=111</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=112</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=113</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=110" BrowseName="1:minVoltage" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=109" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">minVoltage</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=109</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=113" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=109" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=109</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=122" BrowseName="ratedResistance" ParentNodeId="ns=1;i=108">
+    <DisplayName>ratedResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=123</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=124</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=125</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=126</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=123" BrowseName="1:cellResistance" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=122" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">cellResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=122</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=124" BrowseName="1:moduleResistance" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=122" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">moduleResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=122</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=125" BrowseName="1:packResistance" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=122" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">packResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=122</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=126" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=122" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=122</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=127" BrowseName="ratedPower" ParentNodeId="ns=1;i=108">
+    <DisplayName>ratedPower</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=128</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=129</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=130</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=131</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=128" BrowseName="1:powerValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=127" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">powerValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=127</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=130" BrowseName="1:capabilityAt80SoC" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=127" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">capabilityAt80SoC</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=127</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=131" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=127" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=127</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=132" BrowseName="ratedCapacity" ParentNodeId="ns=1;i=108">
+    <DisplayName>ratedCapacity</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=133</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=134</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=135</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=133" BrowseName="1:capacityValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=132" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">capacityValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=132</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=134" BrowseName="1:capacityThresholdExhaustion" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=132" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">capacityThresholdExhaustion</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=132</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=135" BrowseName="1:testingTemperature" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=132" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testingTemperature</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=132</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=136" BrowseName="1:performanceDocument" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=108" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">performanceDocument</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=141" BrowseName="1:testReport" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=108" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">testReport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=108</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=151" BrowseName="dynamicPerformance" ParentNodeId="ns=1;i=107">
+    <DisplayName>dynamicPerformance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=152</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=155</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=158</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=159</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=160</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=167</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=177</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=184</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=205</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=215</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=216</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=107</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=152" BrowseName="stateOfCharge" ParentNodeId="ns=1;i=151">
+    <DisplayName>stateOfCharge</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=153</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=154</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=153" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=152" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=152</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=154" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=152" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=152</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=158" BrowseName="1:performanceDocument" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=151" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">performanceDocument</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=160" BrowseName="dynamicPower" ParentNodeId="ns=1;i=151">
+    <DisplayName>dynamicPower</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=161</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=164</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=161" BrowseName="powerFade" ParentNodeId="ns=1;i=160">
+    <DisplayName>powerFade</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=162</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=163</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=160</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=163" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=161" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=161</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=164" BrowseName="remainingPower" ParentNodeId="ns=1;i=160">
+    <DisplayName>remainingPower</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=165</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=166</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=160</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=165" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=164" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=164</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=177" BrowseName="dynamicRoundTripEfficiency" ParentNodeId="ns=1;i=151">
+    <DisplayName>dynamicRoundTripEfficiency</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=178</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=181</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=178" BrowseName="roundTripEfficiencyFade" ParentNodeId="ns=1;i=177">
+    <DisplayName>roundTripEfficiencyFade</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=179</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=180</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=177</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=179" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=178" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=178</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=180" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=178" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=178</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=181" BrowseName="remainingRoundTripEfficiency" ParentNodeId="ns=1;i=177">
+    <DisplayName>remainingRoundTripEfficiency</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=182</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=183</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=177</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=182" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=181" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=181</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=184" BrowseName="dynamicInternalResistance" ParentNodeId="ns=1;i=151">
+    <DisplayName>dynamicInternalResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=185</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=195</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=185" BrowseName="resistanceIncrease" ParentNodeId="ns=1;i=184">
+    <DisplayName>resistanceIncrease</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=186</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=189</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=192</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=184</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=186" BrowseName="packResistanceIncrease" ParentNodeId="ns=1;i=185">
+    <DisplayName>packResistanceIncrease</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=187</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=188</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=185</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=187" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=186" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=186</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=188" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=186" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=186</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=192" BrowseName="cellResistanceIncrease" ParentNodeId="ns=1;i=185">
+    <DisplayName>cellResistanceIncrease</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=193</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=194</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=185</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=193" BrowseName="1:percentValue" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=192" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">percentValue</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=192</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=194" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=192" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=192</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=195" BrowseName="remainingResistance" ParentNodeId="ns=1;i=184">
+    <DisplayName>remainingResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=196</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=199</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=202</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=184</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=202" BrowseName="remainingCellResistance" ParentNodeId="ns=1;i=195">
+    <DisplayName>remainingCellResistance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=203</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=204</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=195</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=203" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=202" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=202</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=205" BrowseName="dynamicEnergy" ParentNodeId="ns=1;i=151">
+    <DisplayName>dynamicEnergy</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=206</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=209</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=212</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=212" BrowseName="energyThroughput" ParentNodeId="ns=1;i=205">
+    <DisplayName>energyThroughput</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=213</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=214</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=205</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=213" BrowseName="1:dataRecordTime" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=212" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dataRecordTime</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=212</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=215" BrowseName="1:negativeEvents" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=151" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">negativeEvents</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=151</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=217" BrowseName="conformity" ParentNodeId="ns=1;i=9">
+    <DisplayName>conformity</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=218</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=219</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=220</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=221</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=222</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=220" BrowseName="1:resultOfTestReport" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=217" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">resultOfTestReport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=217</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=221" BrowseName="1:thirdPartyAssurance" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=217" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">thirdPartyAssurance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=217</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=222" BrowseName="1:dueDiligencePolicy" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=217" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dueDiligencePolicy</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=217</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=223" BrowseName="safety" ParentNodeId="ns=1;i=9">
+    <DisplayName>safety</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=224</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=225</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=226</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=227</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=228</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=229</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=225" BrowseName="1:safetyMeasures" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=223" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">safetyMeasures</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=223</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=226" BrowseName="1:meaningOfLabels" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=223" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">meaningOfLabels</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=223</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=228" BrowseName="1:dismantling" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=223" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">dismantling</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=223</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=229" BrowseName="1:removalFromAppliance" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=223" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">removalFromAppliance</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=223</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=230" BrowseName="1:sources" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=9" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">sources</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=231" BrowseName="metadata" ParentNodeId="ns=1;i=9">
+    <DisplayName>metadata</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=232</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=233</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=234</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=235</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=236</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=237</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=238</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=239</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=240</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=241</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=232" BrowseName="1:version" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">version</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=233" BrowseName="1:status" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">status</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=237" BrowseName="1:passportIdentifier" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">passportIdentifier</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=239" BrowseName="1:backupReference" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">backupReference</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=240" BrowseName="1:registrationIdentifier" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">registrationIdentifier</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=241" BrowseName="1:lastModification" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=231" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">lastModification</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=231</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=245" BrowseName="handling" ParentNodeId="ns=1;i=9">
+    <DisplayName>handling</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=246</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=249</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=9</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=246" BrowseName="spareParts" ParentNodeId="ns=1;i=245">
+    <DisplayName>spareParts</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=247</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=248</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=245</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=248" BrowseName="1:sparePart" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=246" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">sparePart</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=246</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=249" BrowseName="1:applicable" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=245" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">applicable</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=245</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=5" BrowseName="1:LastUpdate" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">LastUpdate</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=3" BrowseName="1:DppSchemaVersion" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">DppSchemaVersion</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=4" BrowseName="1:DppStatus" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">DppStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=1" BrowseName="DigitalProductPassport" ParentNodeId="i=85">
+    <DisplayName>DigitalProductPassport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=2</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=3</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=4</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=5</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=6</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=7</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=8</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">i=85</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=2" BrowseName="1:UniqueProductIdentifier" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">UniqueProductIdentifier</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=7" BrowseName="1:FacilityId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">FacilityId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=63</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=8" BrowseName="Elements" ParentNodeId="ns=1;i=1">
+    <DisplayName>Elements</DisplayName>
+    <References>
+      <Reference ReferenceType="i=47">ns=1;i=9</Reference>
+      <Reference ReferenceType="i=40">i=61</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+  </UAObject>
+</UANodeSet>
