@@ -29,24 +29,21 @@ namespace Opc.Ua.Data.Processor
             GetDPPDataForProductionLine("muenster", 10);
         }
 
-       private void GetDPPDataForProductionLine(string productionLineName, int idealCycleTime)
+        private void GetDPPDataForProductionLine(string productionLineName, int idealCycleTime)
         {
             try
             {
                 // get the latest idDmc of a cell (latest cell produced)
-                Dictionary<string, object> latestProductProducedSerialNumber = ADXQueryForLastKnownValue("production", productionLineName, "idDmc");
+                Dictionary<string, object> latestProductProduced = ADXQueryForLastKnownValue("production", productionLineName, "idDmc");
 
-                if ((latestProductProducedSerialNumber != null) && (latestProductProducedSerialNumber.Count > 0))
+                if ((latestProductProduced != null) && (latestProductProduced.Count > 0))
                 {
-                    
                     // get the EOL data that are sent very close timewise to the cellID
-                    Dictionary<string, object> EOLData = ADXQueryForEOLData("production", productionLineName, ((DateTime)latestProductProducedSerialNumber["TelemetryTime"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
-                    
-                    // persist in Cloud Library
-                    PersistInCloudLibrary(productionLineName, latestProductProducedSerialNumber)
+                    Dictionary<string, object> EOLData = ADXQueryForEOLData("production", productionLineName, ((DateTime)latestProductProduced["TelemetryTime"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
 
+                    // persist in Cloud Library
+                    PersistInCloudLibrary(productionLineName, latestProductProduced["idDmc"].ToString());
                 }
-                // }
             }
             catch (Exception ex)
             {
@@ -59,7 +56,7 @@ namespace Opc.Ua.Data.Processor
             string dppName = "BatteryPassV6_" + productionLineName + "_" + serialNumber.ToString();
 
             // write the values to a JSON file
-            Dictionary<string, string> values = new() {}
+            Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText("./BatteryPassV6Values.json"));
 
             UANameSpace nameSpace = new() {
                 Title = dppName,
@@ -67,6 +64,7 @@ namespace Opc.Ua.Data.Processor
                 CopyrightText = "OPC Foundation",
                 Description = "Sample BPP for OPCF / Fraunhofer FFB production line simulation"
             };
+
             nameSpace.Nodeset.NodesetXml = File.ReadAllText("./BatteryPassV6.NodeSet2.xml").Replace("BatteryPassV6", dppName);
             var url = QueryHelpers.AddQueryString(
                 _webClient.BaseAddress.AbsoluteUri + "infomodel/upload",
@@ -90,7 +88,8 @@ namespace Opc.Ua.Data.Processor
                 Console.WriteLine("Successfully uploaded BatteryPass to Cloud Library for " + dppName);
             }
         }
-       private float FindPcf(ErpNode node)
+
+        private float FindPcf(ErpNode node)
         {
             if (node.events != null)
             {
@@ -141,23 +140,6 @@ namespace Opc.Ua.Data.Processor
             return _adxDataService.RunQuery(query);
         }
 
-        private Dictionary<string, object> ADXQueryForSpecificTime(string stationName, string productionLineName, string valueToQuery, string timeToQuery, int idealCycleTime)
-        {
-            string query = "opcua_metadata_lkv\r\n"
-                         + "| where Name contains \"" + stationName + "\"\r\n"
-                         + "| where Name contains \"" + productionLineName + "\"\r\n"
-                         + "| join kind = inner(opcua_telemetry\r\n"
-                         + "    | where Name == \"" + valueToQuery + "\"\r\n"
-                         + "    | where Timestamp between (datetime(" + timeToQuery + ") - " +  idealCycleTime.ToString() + "datetime(" + timeToQuery + ") + " +  idealCycleTime.ToString() + ")\r\n"
-                         + "    | project TelemetryTime = Timestamp, DataSetWriterID, Value\r\n"
-                         + ") on DataSetWriterID\r\n"
-                         + "| distinct TelemetryTime, NodeValue = tostring(Value)\r\n"
-                         + "| sort by TelemetryTime desc";
-
-            
-            return _adxDataService.RunQuery(query);
-        }
-
         private Dictionary<string, object> ADXQueryForEOLData(string stationName, string productionLineName, string timeToQuery, int idealCycleTime)
         {
             string query = "opcua_metadata_lkv\r\n"
@@ -168,7 +150,7 @@ namespace Opc.Ua.Data.Processor
                          + "        or (Name == \"quantityValue\" and DataSetWriterID == 35057)\r\n" // height
                          + "        or (Name == \"quantityValue\" and DataSetWriterID == 35060)\r\n" // length
                          + "        or (Name == \"quantityValue\" and DataSetWriterID == 35067)\r\n" // width
-                         + "    | where Timestamp between (datetime(" + timeToQuery + ") - " +  idealCycleTime.ToString() + "datetime(" + timeToQuery + ") + " +  idealCycleTime.ToString() + ")\r\n"
+                         + "    | where Timestamp between (datetime(" + timeToQuery + ") - " + idealCycleTime.ToString() + "datetime(" + timeToQuery + ") + " + idealCycleTime.ToString() + ")\r\n"
                          + "    | project DataSetWriterID, Value, TelemetryTime = Timestamp, VariableName = Name \r\n"
                          + ") on DataSetWriterID\r\n"
                          + "| extend NodeValue = tostring(Value)\r\n"
@@ -180,7 +162,7 @@ namespace Opc.Ua.Data.Processor
                          + "        strcat(VariableName)\r\n"
                          + "    )\r\n"
                          + "| summarize arg_max(Timestamp, *) by DisplayName\r\n"
-                         + "| project DisplayName, NodeValue 
+                         + "| project DisplayName, NodeValue";
 
             return _adxDataService.RunQuery(query);
         }

@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BatteryPassV6Values.json" />
     <None Remove="CarbonFootprintAAS.NodeSet2.xml" />
   </ItemGroup>
 
@@ -29,6 +30,12 @@
     <PackageReference Include="Microsoft.Azure.Kusto.Data" Version="14.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="BatteryPassV6Values.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
