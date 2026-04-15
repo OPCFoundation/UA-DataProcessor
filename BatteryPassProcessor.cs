@@ -161,7 +161,7 @@ namespace Opc.Ua.Data.Processor
             return 0.0f;
         }
 
-        private Dictionary<string, object> ADXQueryForSpecificValue(string stationName, string productionLineName, string valueToQuery, double desiredValue)
+        private Dictionary<string, object> ADXQueryForLastKnownValue(string stationName, string productionLineName, string valueToQuery)
         {
             string query = "opcua_metadata_lkv\r\n"
                          + "| where Name contains \"" + stationName + "\"\r\n"
@@ -169,9 +169,10 @@ namespace Opc.Ua.Data.Processor
                          + "| join kind = inner(opcua_telemetry\r\n"
                          + "    | where Name == \"" + valueToQuery + "\"\r\n"
                          + "    | where Timestamp > now(- 1h)\r\n"
+                         + "    | project TelemetryTime = Timestamp, DataSetWriterID, Value\r\n"
                          + ") on DataSetWriterID\r\n"
-                         + "| distinct Timestamp, OPCUANodeValue = todouble(Value)\r\n"
-                         + "| sort by Timestamp desc";
+                         + "| distinct TelemetryTime, OPCUANodeValue = todouble(Value)\r\n"
+                         + "| top 1 by TelemetryTime desc";
 
             return _adxDataService.RunQuery(query);
         }
@@ -183,11 +184,39 @@ namespace Opc.Ua.Data.Processor
                          + "| where Name contains \"" + productionLineName + "\"\r\n"
                          + "| join kind = inner(opcua_telemetry\r\n"
                          + "    | where Name == \"" + valueToQuery + "\"\r\n"
-                         + "    | where Timestamp > now(- 1h)\r\n"
+                         + "    | where Timestamp between (datetime(" + timeToQuery + ") - " +  idealCycleTime.ToString() + "datetime(" + timeToQuery + ") + " +  idealCycleTime.ToString() + ")\r\n"
+                         + "    | project TelemetryTime = Timestamp, DataSetWriterID, Value\r\n"
                          + ") on DataSetWriterID\r\n"
-                         + "| distinct Timestamp, OPCUANodeValue = todouble(Value)\r\n"
-                         + "| where around(Timestamp, datetime(" + timeToQuery + "), " + idealCycleTime.ToString() + "s)\r\n"
-                         + "| sort by Timestamp desc";
+                         + "| distinct TelemetryTime, NodeValue = tostring(Value)\r\n"
+                         + "| sort by TelemetryTime desc";
+
+            
+            return _adxDataService.RunQuery(query);
+        }
+
+        private Dictionary<string, object> ADXQueryForEOLData(string stationName, string productionLineName, string timeToQuery, int idealCycleTime)
+        {
+            string query = "opcua_metadata_lkv\r\n"
+                         + "| where Name contains \"" + stationName + "\"\r\n"
+                         + "| where Name contains \"" + productionLineName + "\"\r\n"
+                         + "| join kind = inner(opcua_telemetry\r\n"
+                         + "    | where (Name == \"quantityValue\" and DataSetWriterID == 22669)\r\n" // weight
+                         + "        or (Name == \"quantityValue\" and DataSetWriterID == 35057)\r\n" // height
+                         + "        or (Name == \"quantityValue\" and DataSetWriterID == 35060)\r\n" // length
+                         + "        or (Name == \"quantityValue\" and DataSetWriterID == 35067)\r\n" // width
+                         + "    | where Timestamp between (datetime(" + timeToQuery + ") - " +  idealCycleTime.ToString() + "datetime(" + timeToQuery + ") + " +  idealCycleTime.ToString() + ")\r\n"
+                         + "    | project DataSetWriterID, Value, TelemetryTime = Timestamp, VariableName = Name \r\n"
+                         + ") on DataSetWriterID\r\n"
+                         + "| extend NodeValue = tostring(Value)\r\n"
+                         + "| extend DisplayName = case(\r\n"
+                         + "        VariableName == \"quantityValue\" and DataSetWriterID == 22669, \"weight\",\r\n"
+                         + "        VariableName == \"quantityValue\" and DataSetWriterID == 35057, \"height\",\r\n"
+                         + "        VariableName == \"quantityValue\" and DataSetWriterID == 35060, \"length\",\r\n"
+                         + "        VariableName == \"quantityValue\" and DataSetWriterID == 35067, \"width\",\r\n"
+                         + "        strcat(VariableName)\r\n"
+                         + "    )\r\n"
+                         + "| summarize arg_max(Timestamp, *) by DisplayName\r\n"
+                         + "| project DisplayName, NodeValue 
 
             return _adxDataService.RunQuery(query);
         }
