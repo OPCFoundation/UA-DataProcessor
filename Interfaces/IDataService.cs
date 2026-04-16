@@ -4,6 +4,6 @@
     {
         public void Connect();
 
-        public Dictionary<string, object> RunQuery(string query);
+        public Dictionary<string, object> RunQuery(string query, bool multiRow);
     }
 }

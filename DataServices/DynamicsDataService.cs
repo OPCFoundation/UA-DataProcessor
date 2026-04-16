@@ -84,7 +84,7 @@ namespace Opc.Ua.Data.Processor
             }
         }
 
-        public Dictionary<string, object> RunQuery(string query)
+        public Dictionary<string, object> RunQuery(string query, bool multiRow = false)
         {
             Dictionary<string, object> results = new();
 

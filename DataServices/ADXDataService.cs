@@ -54,9 +54,8 @@ namespace Opc.Ua.Data.Processor
             }
         }
 
-        public Dictionary<string, object> RunQuery(string query)
+        public Dictionary<string, object> RunQuery(string query, bool multiRow = false)
         {
-            bool allowMultiRow = false;
             Dictionary<string, object> values = new();
 
             ClientRequestProperties clientRequestProperties = new ClientRequestProperties()
@@ -78,7 +77,7 @@ namespace Opc.Ua.Data.Processor
                                 {
                                     if (reader.GetValue(i) != null)
                                     {
-                                        if (!allowMultiRow)
+                                        if (!multiRow)
                                         {
                                             if (values.ContainsKey(reader.GetName(i)))
                                             {

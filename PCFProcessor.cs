@@ -113,7 +113,9 @@ namespace Opc.Ua.Data.Processor
                 CopyrightText = "OPC Foundation",
                 Description = "Sample PCF for Digital Twin Consortium production line simulation"
             };
-            nameSpace.Nodeset.NodesetXml = File.ReadAllText("./CarbonFootprintAAS.NodeSet2.xml").Replace("CarbonFootprintAAS", dppName);
+            nameSpace.Nodeset.NodesetXml = File.ReadAllText("./CarbonFootprintAAS.NodeSet2.xml")
+                .Replace("CarbonFootprintAAS", dppName)
+                .Replace("PublicationDate=\"2026-03-25T00:00:00Z\"", "PublicationDate=\"" + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") + "\"");
 
             var url = QueryHelpers.AddQueryString(
                 _webClient.BaseAddress.AbsoluteUri + "infomodel/upload",
