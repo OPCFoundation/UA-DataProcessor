@@ -18,20 +18,27 @@ namespace Opc.Ua.Data.Processor
             // connect to ADX cluster
             string adxClusterName = Environment.GetEnvironmentVariable("ADX_HOST");
             string adxDBName = Environment.GetEnvironmentVariable("ADX_DB");
-            string aadAppID = Environment.GetEnvironmentVariable("ADX_APPLICATION_ID");
+            string adxAppID = Environment.GetEnvironmentVariable("ADX_APPLICATION_ID");
+            string adxTenantId = Environment.GetEnvironmentVariable("ADX_TENANT_ID");
 
             if (!string.IsNullOrEmpty(adxClusterName) && !string.IsNullOrEmpty(adxDBName))
             {
                 KustoConnectionStringBuilder connectionString;
-                if (string.IsNullOrEmpty(aadAppID))
+                if (string.IsNullOrEmpty(adxAppID))
                 {
+                    var credentialOptions = new DefaultAzureCredentialOptions();
+                    if (!string.IsNullOrEmpty(adxTenantId))
+                    {
+                        credentialOptions.TenantId = adxTenantId;
+                    }
+
                     connectionString = new KustoConnectionStringBuilder(adxClusterName, adxDBName)
-                        .WithAadAzureTokenCredentialsAuthentication(new DefaultAzureCredential());
+                        .WithAadAzureTokenCredentialsAuthentication(new DefaultAzureCredential(credentialOptions));
                 }
                 else
                 {
                     connectionString = new KustoConnectionStringBuilder(adxClusterName, adxDBName)
-                        .WithAadUserManagedIdentity(aadAppID);
+                        .WithAadUserManagedIdentity(adxAppID);
                 }
 
                 _queryProvider = KustoClientFactory.CreateCslQueryProvider(connectionString);

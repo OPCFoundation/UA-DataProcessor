@@ -12,7 +12,8 @@ In terms of data processors, currently a Product Carbon Footprint (PCF) processo
 
 - `ADX_HOST`: The hostname for the Azure Data Explorer instance.
 - `ADX_DB`: The database name for the Azure Data Explorer instance.
-- `ADX_APPLICATION_ID`: The application/client ID for authenticating with Azure Data Explorer.
+- `ADX_APPLICATION_ID`: The application/client ID for authenticating with Azure Data Explorer (not needed for local debugging).
+- `ADX_TENANT_ID`: The tenant ID in which the Azure Data Explorer instance is located (if different from your default tenant).
 
 - `WATTTIME_USER`: The username for the WattTime service.
 - `WATTTIME_PASSWORD`: The password for the WattTime service.
