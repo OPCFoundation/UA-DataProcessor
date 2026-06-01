@@ -6,7 +6,7 @@ namespace UA_DataProcessor
 {
     public class WssTransferLifecycleHandler : ITransferLifecycleHandler
     {
-        private readonly IDataSpaceTransferExecutor _service;
+        private readonly IDataSpaceTransferService _service;
         private readonly string _clientId;
 
         private static readonly HashSet<string> SilentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -14,7 +14,7 @@ namespace UA_DataProcessor
             "pong", "welcome", "error", "ack", "subscribed", "unsubscribed", "response", "transfer_ack"
         };
 
-        public WssTransferLifecycleHandler(IDataSpaceTransferExecutor service, string clientId)
+        public WssTransferLifecycleHandler(IDataSpaceTransferService service, string clientId)
         {
             _service = service;
             _clientId = clientId;

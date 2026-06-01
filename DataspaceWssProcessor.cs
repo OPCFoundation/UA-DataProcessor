@@ -39,11 +39,11 @@ namespace UA_DataProcessor
         private static ITransferLifecycleHandler CreateTransferHandlerFromEnvironment()
         {
             string wssClientId = Environment.GetEnvironmentVariable("WSS_CLIENT_ID") ?? Environment.MachineName;
-            IDataSpaceTransferExecutor executor = CreateExecutor();
-            return new WssTransferLifecycleHandler(executor, wssClientId);
+            IDataSpaceTransferService service = CreateExecutor();
+            return new WssTransferLifecycleHandler(service, wssClientId);
         }
 
-        private static IDataSpaceTransferExecutor CreateExecutor()
+        private static IDataSpaceTransferService CreateExecutor()
         {
             string executorType = (Environment.GetEnvironmentVariable("WSS_TRANSFER_EXECUTOR") ?? "opcua-publishednodes").Trim().ToLowerInvariant();
 
