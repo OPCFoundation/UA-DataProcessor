@@ -34,6 +34,15 @@ namespace Opc.Ua.Data.Processor
     {
         static async Task Main()
         {
+            string runMode = Environment.GetEnvironmentVariable("DATA_PROCESSOR_MODE")?.Trim().ToLowerInvariant() ?? "legacy";
+
+            if (runMode == "wss" || runMode == "wss-bridge")
+            {
+                UA_DataProcessor.DataspaceWssProcessor bridge = new UA_DataProcessor.DataspaceWssProcessor();
+                await bridge.RunAsync(CancellationToken.None).ConfigureAwait(false);
+                return;
+            }
+
             PCFProcessor pcfProcessor = new PCFProcessor();
             BatteryPassProcessor batteryPassProcessor = new BatteryPassProcessor();
             while (true)
