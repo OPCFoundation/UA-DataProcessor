@@ -6,9 +6,9 @@ Currently, available data services are for Azure Data Explorer and Dynamics365, 
 In terms of data processors, currently a Product Carbon Footprint (PCF) processor following the Green-House Gas (GHG) Protocol calculation method is implemened.
 
 # Required Environment Variables:
-- `DATA_PROCESSOR_MODE`: Runtime mode selector. Use `legacy` (default) for current PCF/BatteryPass processing, or `wss` (or `wss-bridge`) for the independent WSS-to-publishednodes bridge mode.
+- `DATA_PROCESSOR_MODE`: Runtime mode selector. Use `default` (or leave it unset/empty) for PCF/BatteryPass processing mode, or `wss` (or `wss-bridge`) for the WSS-to-publishednodes bridge mode.
 
-## Legacy mode (`DATA_PROCESSOR_MODE=legacy`)
+## Default mode (`DATA_PROCESSOR_MODE=default` or empty)
 - `UA_CLOUD_LIBRARY_URL`: The URL for the UA Cloud Library instance to upload nodeset files to.
 - `UA_CLOUD_LIBRARY_USERNAME`: The username for authenticating with the UA Cloud Library.
 - `UA_CLOUD_LIBRARY_PASSWORD`: The password for authenticating with the UA Cloud Library.
@@ -31,6 +31,7 @@ In terms of data processors, currently a Product Carbon Footprint (PCF) processo
 - `DYNAMICS_BATCH_NAME`: The batch name for the Dynamics 365 instance.
 
 ## WSS bridge mode (`DATA_PROCESSOR_MODE=wss`)
+Architecture overview: this bridge connects to the Eclipse Dataspace WSS server extension and receives transfer commands over WSS; on the other side, it forwards the generated publishednodes payload to the Cloud Publisher REST API.
 - `WSS_ENDPOINT`: WSS server endpoint for receiving transfer messages (for example `wss://example.com/transfer`).
 - `WSS_API_KEY`: API key used by the WSS client connection.
 - `WSS_CLIENT_ID`: Client identifier sent in query string and ping/ack messages (default: machine name).
@@ -90,3 +91,5 @@ The executor processes messages like:
 - `pushInterval`: interval in ms for publishing and heartbeat (5000 ms = 5 seconds)
 - `mqttTopic`: target MQTT topic (optional, for reference)
 - `timestamp`: ISO8601 timestamp
+
+This feature was implemented by VDMA.

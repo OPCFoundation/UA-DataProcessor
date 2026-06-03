@@ -34,7 +34,7 @@ namespace Opc.Ua.Data.Processor
     {
         static async Task Main()
         {
-            string runMode = Environment.GetEnvironmentVariable("DATA_PROCESSOR_MODE")?.Trim().ToLowerInvariant() ?? "legacy";
+            string runMode = Environment.GetEnvironmentVariable("DATA_PROCESSOR_MODE")?.Trim().ToLowerInvariant() ?? "default";
 
             if (runMode == "wss" || runMode == "wss-bridge")
             {
