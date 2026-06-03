@@ -92,4 +92,4 @@ The executor processes messages like:
 - `mqttTopic`: target MQTT topic (optional, for reference)
 - `timestamp`: ISO8601 timestamp
 
-This feature was implemented by VDMA.
+This feature was implemented by <a href='https://vdma.eu/' target='_blank'>VDMA</a>.
