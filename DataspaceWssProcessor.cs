@@ -77,6 +77,10 @@ namespace UA_DataProcessor
         private static string GetRequiredEnvironmentVariable(string key)
         {
             string value = Environment.GetEnvironmentVariable(key);
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                throw new InvalidOperationException($"Missing required environment variable '{key}'.");
+            }
 
             return value;
         }
