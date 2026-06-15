@@ -38,8 +38,10 @@ namespace Opc.Ua.Data.Processor
 
             if (runMode == "wss" || runMode == "wss-bridge")
             {
+                using CancellationTokenSource cts = new CancellationTokenSource();
+                Console.CancelKeyPress += (_, e) => { e.Cancel = true; cts.Cancel(); };
                 UA_DataProcessor.DataspaceWssProcessor bridge = new UA_DataProcessor.DataspaceWssProcessor();
-                await bridge.RunAsync(CancellationToken.None).ConfigureAwait(false);
+                await bridge.RunAsync(cts.Token).ConfigureAwait(false);
                 return;
             }
 

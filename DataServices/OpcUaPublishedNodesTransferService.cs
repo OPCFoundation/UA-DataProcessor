@@ -154,8 +154,7 @@ namespace Opc.Ua.Data.Processor
             request.Content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
             
             Console.WriteLine("Posting publishednodes to: " + url);
-            Console.WriteLine("Payload: " + jsonPayload);
-            
+
             try
             {
                 string bearerKey = _publishedNodesApiBearerKey?.Trim() ?? string.Empty;
@@ -173,11 +172,10 @@ namespace Opc.Ua.Data.Processor
                 {
                     string responseBody = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
                     Console.WriteLine("Error posting publishednodes JSON to " + url + ": " + response.StatusCode + ". " + responseBody);
+                    throw new InvalidOperationException("Publishednodes POST failed with " + response.StatusCode + ".");
                 }
-                else
-                {
-                    Console.WriteLine("Successfully posted publishednodes to " + url);
-                }
+
+                Console.WriteLine("Successfully posted publishednodes to " + url);
             }
             catch (FormatException ex) when (ex.Message.Contains("ASCII") || ex.Message.Contains("header"))
             {
@@ -215,6 +213,7 @@ namespace Opc.Ua.Data.Processor
                 {
                     Console.WriteLine("Inner Exception: " + ex.InnerException.Message);
                 }
+                throw;
             }
         }
 
@@ -242,11 +241,10 @@ namespace Opc.Ua.Data.Processor
                 {
                     string responseBody = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
                     Console.WriteLine("Error deleting publishednodes registration from " + url + ": " + response.StatusCode + ". " + responseBody);
+                    throw new InvalidOperationException("Publishednodes DELETE failed with " + response.StatusCode + ".");
                 }
-                else
-                {
-                    Console.WriteLine("Successfully deleted publishednodes registration at " + url);
-                }
+
+                Console.WriteLine("Successfully deleted publishednodes registration at " + url);
             }
             catch (Exception ex)
             {

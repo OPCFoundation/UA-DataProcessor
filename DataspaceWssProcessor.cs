@@ -21,11 +21,11 @@ namespace UA_DataProcessor
             _transferHandler = transferHandler;
         }
 
-        private static IMessageConnection CreateConnectionFromEnvironment()
-        {
-            string wssEndpoint = GetRequiredEnvironmentVariable("WSS_ENDPOINT");
-            string wssApiKey = GetRequiredEnvironmentVariable("WSS_API_KEY");
-            string wssClientId = Environment.GetEnvironmentVariable("WSS_CLIENT_ID") ?? Environment.MachineName;
+		private static IMessageConnection CreateConnectionFromEnvironment()
+		{
+			string wssEndpoint = GetRequiredEnvironmentVariable("WSS_ENDPOINT");
+			string wssApiKey = GetOptionalEnvironmentVariable("WSS_API_KEY");
+			string wssClientId = Environment.GetEnvironmentVariable("WSS_CLIENT_ID") ?? Environment.MachineName;
 
             return new WssClientConnection(
                 new Uri(wssEndpoint),
@@ -74,16 +74,17 @@ namespace UA_DataProcessor
             _connection.Close();
         }
 
-        private static string GetRequiredEnvironmentVariable(string key)
-        {
-            string value = Environment.GetEnvironmentVariable(key);
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                throw new InvalidOperationException($"Missing required environment variable '{key}'.");
-            }
+		private static string GetRequiredEnvironmentVariable(string key)
+		{
+			string value = Environment.GetEnvironmentVariable(key);
 
-            return value;
-        }
+			return value;
+		}
+
+		private static string GetOptionalEnvironmentVariable(string key)
+		{
+			return Environment.GetEnvironmentVariable(key);
+		}
 
         private static int ParseIntEnvironmentVariable(string key, int defaultValue)
         {
@@ -108,4 +109,3 @@ namespace UA_DataProcessor
         }
     }
 }
-

@@ -33,10 +33,10 @@ In terms of data processors, currently a Product Carbon Footprint (PCF) processo
 ## WSS bridge mode (`DATA_PROCESSOR_MODE=wss`)
 Architecture overview: this bridge connects to the Eclipse Dataspace WSS server extension and receives transfer commands over WSS; on the other side, it forwards the generated publishednodes payload to the Cloud Publisher REST API.
 - `WSS_ENDPOINT`: WSS server endpoint for receiving transfer messages (for example `wss://example.com/transfer`).
-- `WSS_API_KEY`: API key used by the WSS client connection.
+- `WSS_API_KEY`: Optional API key used by the WSS client connection via headers.
 - `WSS_CLIENT_ID`: Client identifier sent in query string and ping/ack messages (default: machine name).
 - `WSS_TRANSFER_EXECUTOR`: Transfer execution strategy. Currently supported: `opcua-publishednodes` (aliases: `opcua`).
-- `PUBLISHED_NODES_API_URL`: REST endpoint to receive the generated publishednodes JSON via HTTP POST. The current transfer ID is sent as `registrationId` in the query string.
+- `PUBLISHED_NODES_API_URL`: REST endpoint to receive the generated publishednodes JSON via HTTP POST. The current transfer ID is sent as `registrationKey` in the query string.
 - `PUBLISHED_NODES_API_BEARER_KEY`: Bearer token used for the REST API authorization header.
 
 Optional variables for WSS bridge mode:
@@ -59,14 +59,14 @@ For transfer lifecycle commands, the client responds with `transfer_ack` message
 
 ### Internal component split (WSS mode)
 - `IMessageConnection`: generic transport contract for receiving text messages, sending text messages, and owning connection lifecycle.
-- `WssClientConnection`: WSS-specific `IMessageConnection` implementation that owns WebSocket connect/reconnect lifecycle, auth/query params, receive loop, and periodic ping.
+- `WssClientConnection`: WSS-specific `IMessageConnection` implementation that owns WebSocket connect/reconnect lifecycle, auth headers/query params, receive loop, and periodic ping.
 - `ITransferLifecycleHandler`: generic protocol/message handling contract that reacts to incoming transport messages.
 - `WssTransferLifecycleHandler`: WSS transfer-lifecycle implementation that parses protocol message types, responds to `ping`, sends `transfer_ack`, and delegates command execution.
-- `IDataSpaceTransferExecutor`: generic application-layer contract for transfer start/suspend/terminate/untyped behaviors.
+- `IDataSpaceTransferService`: generic application-layer contract for transfer start/suspend/terminate/untyped behaviors.
 - `OpcUaPublishedNodesTransferService`: OPC UA-specific executor that converts node lists to publishednodes JSON and posts to the configured REST endpoint.
-- `WssPublishedNodesBridge`: WSS composition root that wires `IMessageConnection` + `ITransferLifecycleHandler` + selected `IDataSpaceTransferExecutor` from environment variables, with constructor injection support for reuse and testing.
+- `DataspaceWssProcessor`: WSS composition root that wires `IMessageConnection` + `ITransferLifecycleHandler` + selected `IDataSpaceTransferService` from environment variables, with constructor injection support for reuse and testing.
 
-To support other dataspace scenarios, add another `IDataSpaceTransferExecutor` implementation and select it via `WSS_TRANSFER_EXECUTOR`, or compose a different `IMessageConnection` implementation if the transport is not WSS.
+To support other dataspace scenarios, add another `IDataSpaceTransferService` implementation and select it via `WSS_TRANSFER_EXECUTOR`, or compose a different `IMessageConnection` implementation if the transport is not WSS.
 
 ### Example WSS Message Format (EDC Industrial)
 

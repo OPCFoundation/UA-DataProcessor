@@ -53,7 +53,7 @@ namespace UA_DataProcessor.Connectors
 					SetCurrentClient(client);
 
 					Uri connectUri = BuildConnectUri();
-					Console.WriteLine("Connecting WSS client to " + connectUri);
+					Console.WriteLine("Connecting WSS client to " + connectUri.GetLeftPart(UriPartial.Path));
 
 					bool connected = await ConnectWithTimeoutAsync(client, connectUri, cancellationToken).ConfigureAwait(false);
 					if (!connected)
@@ -132,8 +132,12 @@ namespace UA_DataProcessor.Connectors
 		private ClientWebSocket CreateWebSocket()
 		{
 			ClientWebSocket client = new ClientWebSocket();
-			client.Options.SetRequestHeader("Authorization", "ApiKey " + _apiKey);
-			client.Options.SetRequestHeader("X-Api-Key", _apiKey);
+			if (!string.IsNullOrWhiteSpace(_apiKey))
+			{
+				client.Options.SetRequestHeader("Authorization", "ApiKey " + _apiKey);
+				client.Options.SetRequestHeader("X-Api-Key", _apiKey);
+			}
+
 			return client;
 		}
 
@@ -143,8 +147,7 @@ namespace UA_DataProcessor.Connectors
 			string separator = baseUrl.Contains("?") ? "&" : "?";
 			string uri = baseUrl
 				+ separator
-				+ "clientId=" + Uri.EscapeDataString(ClientId)
-				+ "&apiKey=" + Uri.EscapeDataString(_apiKey);
+				+ "clientId=" + Uri.EscapeDataString(ClientId);
 
 			return new Uri(uri);
 		}
@@ -269,4 +272,3 @@ namespace UA_DataProcessor.Connectors
 		}
 	}
 }
-

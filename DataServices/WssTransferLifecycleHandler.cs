@@ -75,9 +75,17 @@ namespace UA_DataProcessor
         private async Task ExecuteStartTransferAsync(IMessageConnection connection, JObject payload, CancellationToken cancellationToken)
         {
             string transferId = payload["transferId"]?.ToString() ?? payload["transfer_id"]?.ToString() ?? Guid.NewGuid().ToString("N");
-            (string ackStatus, string message) result = await _service.StartTransferAsync(transferId, payload, cancellationToken).ConfigureAwait(false);
-            await SendTransferAckAsync(connection, transferId, result.ackStatus, cancellationToken).ConfigureAwait(false);
-            Console.WriteLine(result.message);
+            try
+            {
+                (string ackStatus, string message) result = await _service.StartTransferAsync(transferId, payload, cancellationToken).ConfigureAwait(false);
+                await SendTransferAckAsync(connection, transferId, result.ackStatus, cancellationToken).ConfigureAwait(false);
+                Console.WriteLine(result.message);
+            }
+            catch (Exception ex)
+            {
+                await SendTransferAckAsync(connection, transferId, "failed", cancellationToken).ConfigureAwait(false);
+                Console.WriteLine("Failed to start transfer " + transferId + ": " + ex.Message);
+            }
         }
 
         private async Task ExecuteSuspendTransferAsync(IMessageConnection connection, JObject payload, CancellationToken cancellationToken)
@@ -88,9 +96,17 @@ namespace UA_DataProcessor
                 return;
             }
 
-            (string ackStatus, string message) result = await _service.SuspendTransferAsync(transferId, payload, cancellationToken).ConfigureAwait(false);
-            await SendTransferAckAsync(connection, transferId, result.ackStatus, cancellationToken).ConfigureAwait(false);
-            Console.WriteLine(result.message);
+            try
+            {
+                (string ackStatus, string message) result = await _service.SuspendTransferAsync(transferId, payload, cancellationToken).ConfigureAwait(false);
+                await SendTransferAckAsync(connection, transferId, result.ackStatus, cancellationToken).ConfigureAwait(false);
+                Console.WriteLine(result.message);
+            }
+            catch (Exception ex)
+            {
+                await SendTransferAckAsync(connection, transferId, "failed", cancellationToken).ConfigureAwait(false);
+                Console.WriteLine("Failed to suspend transfer " + transferId + ": " + ex.Message);
+            }
         }
 
         private async Task ExecuteTerminateTransferAsync(IMessageConnection connection, JObject payload, CancellationToken cancellationToken)
@@ -101,9 +117,17 @@ namespace UA_DataProcessor
                 return;
             }
 
-            (string ackStatus, string message) result = await _service.TerminateTransferAsync(transferId, payload, cancellationToken).ConfigureAwait(false);
-            await SendTransferAckAsync(connection, transferId, result.ackStatus, cancellationToken).ConfigureAwait(false);
-            Console.WriteLine(result.message);
+            try
+            {
+                (string ackStatus, string message) result = await _service.TerminateTransferAsync(transferId, payload, cancellationToken).ConfigureAwait(false);
+                await SendTransferAckAsync(connection, transferId, result.ackStatus, cancellationToken).ConfigureAwait(false);
+                Console.WriteLine(result.message);
+            }
+            catch (Exception ex)
+            {
+                await SendTransferAckAsync(connection, transferId, "failed", cancellationToken).ConfigureAwait(false);
+                Console.WriteLine("Failed to terminate transfer " + transferId + ": " + ex.Message);
+            }
         }
 
         private async Task SendPongAsync(IMessageConnection connection, CancellationToken cancellationToken)
@@ -134,4 +158,3 @@ namespace UA_DataProcessor
 
     }
 }
-
