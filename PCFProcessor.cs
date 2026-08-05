@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Opc.Ua.Cloud.Client.Models;
+using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -9,7 +10,16 @@ namespace Opc.Ua.Data.Processor
 {
     public class PCFProcessor
     {
+        // the production line whose OPC UA data is available in InfluxDB
+        private const string InfluxProductionLineName = "Munich";
+
+        // the data source is detected from the environment: when INFLUX_TOKEN is set, OPC UA data is
+        // read from InfluxDB (which only holds the Munich production line), otherwise from Azure Data
+        // Explorer (which holds both the Munich and the Seattle production line)
+        private static bool UseInfluxDB => !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("INFLUX_TOKEN"));
+
         private readonly ADXDataService _adxDataService = new ADXDataService();
+        private readonly InfluxDataService _influxDataService = new InfluxDataService();
         private readonly DynamicsDataService _dynamicsDataService = new DynamicsDataService();
         private readonly HttpClient _webClient = new HttpClient()
         {
@@ -22,7 +32,15 @@ namespace Opc.Ua.Data.Processor
 
         public PCFProcessor()
         {
-            _adxDataService.Connect();
+            if (UseInfluxDB)
+            {
+                _influxDataService.Connect();
+            }
+            else
+            {
+                _adxDataService.Connect();
+            }
+
             _dynamicsDataService.Connect();
         }
 
@@ -30,8 +48,13 @@ namespace Opc.Ua.Data.Processor
         {
             // we have two production lines in the manufacturing ontologies production line simulation and they are connected like so:
             // assembly -> test -> packaging
-            CalcPCFForProductionLine("Munich", "48.1375", "11.575", 6);
-            CalcPCFForProductionLine("Seattle", "47.609722", "-122.333056", 10);
+            CalcPCFForProductionLine(InfluxProductionLineName, "48.1375", "11.575", 6);
+
+            // the Seattle production line is only available in Azure Data Explorer
+            if (!UseInfluxDB)
+            {
+                CalcPCFForProductionLine("Seattle", "47.609722", "-122.333056", 10);
+            }
         }
 
         private void CalcPCFForProductionLine(string productionLineName, string latitude, string longitude, int idealCycleTime)
@@ -203,6 +226,11 @@ namespace Opc.Ua.Data.Processor
 
         private Dictionary<string, object> ADXQueryForSpecificValue(string stationName, string productionLineName, string valueToQuery, double desiredValue)
         {
+            if (UseInfluxDB)
+            {
+                return InfluxQueryForSpecificValue(stationName, productionLineName, valueToQuery);
+            }
+
             string query = "opcua_metadata_lkv\r\n"
                          + "| where DataSetName contains \"" + stationName + "\"\r\n"
                          + "| where DataSetName contains \"" + productionLineName + "\"\r\n"
@@ -218,6 +246,11 @@ namespace Opc.Ua.Data.Processor
 
         private Dictionary<string, object> ADXQueryForSpecificTime(string stationName, string productionLineName, string valueToQuery, string timeToQuery, int idealCycleTime)
         {
+            if (UseInfluxDB)
+            {
+                return InfluxQueryForSpecificTime(stationName, productionLineName, valueToQuery, timeToQuery, idealCycleTime);
+            }
+
             string query = "opcua_metadata_lkv\r\n"
                          + "| where DataSetName contains \"" + stationName + "\"\r\n"
                          + "| where DataSetName contains \"" + productionLineName + "\"\r\n"
@@ -230,6 +263,43 @@ namespace Opc.Ua.Data.Processor
                          + "| sort by Timestamp desc";
 
             return _adxDataService.RunQuery(query);
+        }
+
+        private Dictionary<string, object> InfluxQueryForSpecificValue(string stationName, string productionLineName, string valueToQuery)
+        {
+            string query = _influxDataService.BuildLastKnownValueQuery(stationName, productionLineName, valueToQuery);
+
+            return NormalizeNodeValue(_influxDataService.RunQuery(query));
+        }
+
+        private Dictionary<string, object> InfluxQueryForSpecificTime(string stationName, string productionLineName, string valueToQuery, string timeToQuery, int idealCycleTime)
+        {
+            DateTime time = DateTime.SpecifyKind(DateTime.Parse(timeToQuery, CultureInfo.InvariantCulture), DateTimeKind.Utc);
+
+            string query = _influxDataService.BuildValueAtTimeQuery(stationName, productionLineName, valueToQuery, time, idealCycleTime);
+
+            return NormalizeNodeValue(_influxDataService.RunQuery(query));
+        }
+
+        /// <summary>
+        /// The Azure Data Explorer queries project the OPC UA node value via todouble(), so make sure
+        /// the InfluxDB results are of the same type for the callers.
+        /// </summary>
+        private static Dictionary<string, object> NormalizeNodeValue(Dictionary<string, object> values)
+        {
+            if ((values != null) && values.TryGetValue("OPCUANodeValue", out object nodeValue) && (nodeValue != null))
+            {
+                try
+                {
+                    values["OPCUANodeValue"] = Convert.ToDouble(nodeValue, CultureInfo.InvariantCulture);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("NormalizeNodeValue: " + ex.Message);
+                }
+            }
+
+            return values;
         }
     }
 }
