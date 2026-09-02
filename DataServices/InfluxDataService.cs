@@ -34,6 +34,27 @@ namespace Opc.Ua.Data.Processor
 
         private static string MetadataMeasurement => Environment.GetEnvironmentVariable("INFLUX_METADATA_MEASUREMENT") ?? "opcua_metadata";
 
+        // Telegraf's json_v2 parser flattens the OPC UA PubSub message and keeps the nested
+        // prefixes, so the OPC UA variable "Status" is stored as the Influx field
+        // "Payload_Status_Value". These wrap a plain OPC UA variable name into that form.
+        private static string FieldPrefix => Environment.GetEnvironmentVariable("INFLUX_FIELD_PREFIX") ?? "Payload_";
+
+        private static string FieldSuffix => Environment.GetEnvironmentVariable("INFLUX_FIELD_SUFFIX") ?? "_Value";
+
+        /// <summary>
+        /// Maps an OPC UA variable name (e.g. "Status") to the Influx field name Telegraf writes
+        /// (e.g. "Payload_Status_Value"). Names that already carry the prefix are left untouched.
+        /// </summary>
+        private static string ToFieldName(string valueToQuery)
+        {
+            if (string.IsNullOrEmpty(valueToQuery) || valueToQuery.StartsWith(FieldPrefix, StringComparison.Ordinal))
+            {
+                return valueToQuery;
+            }
+
+            return FieldPrefix + valueToQuery + FieldSuffix;
+        }
+
         public void Connect()
         {
             string url = Environment.GetEnvironmentVariable("INFLUX_URL") ?? "http://influxdb.default.svc.cluster.local:8086";
@@ -147,7 +168,7 @@ namespace Opc.Ua.Data.Processor
         public string BuildLastKnownValueQuery(string stationName, string productionLineName, string valueToQuery)
         {
             return BuildTelemetryQuery(stationName, productionLineName,
-                $" |> filter(fn: (r) => r._field == \"{EscapeFlux(valueToQuery)}\")",
+                $" |> filter(fn: (r) => r._field == \"{EscapeFlux(ToFieldName(valueToQuery))}\")",
                 "-1h",
                 "now()")
                 + " |> last()";
@@ -164,7 +185,7 @@ namespace Opc.Ua.Data.Processor
             DateTime stop = timeToQuery.ToUniversalTime().AddSeconds(idealCycleTime);
 
             return BuildTelemetryQuery(stationName, productionLineName,
-                $" |> filter(fn: (r) => r._field == \"{EscapeFlux(valueToQuery)}\")",
+                $" |> filter(fn: (r) => r._field == \"{EscapeFlux(ToFieldName(valueToQuery))}\")",
                 start.ToString("o", CultureInfo.InvariantCulture),
                 stop.ToString("o", CultureInfo.InvariantCulture))
                 + " |> last()";
@@ -179,11 +200,19 @@ namespace Opc.Ua.Data.Processor
         private string BuildTelemetryQuery(string stationName, string productionLineName, string fieldFilter, string rangeStart, string rangeStop)
         {
             List<string> writers = GetWriters(stationName, productionLineName);
-            string writerFilter = string.Empty;
+            string writerFilter;
             if (writers.Count > 0)
             {
                 string set = string.Join(", ", writers.Select(writer => $"\"{EscapeFlux(writer)}\""));
                 writerFilter = $" |> filter(fn: (r) => contains(value: r.datasetWriterId, set: [{set}]))";
+            }
+            else
+            {
+                // Omitting the filter would widen the query to EVERY dataset writer in the bucket,
+                // so the caller would silently receive another station's telemetry and attribute it
+                // to this one. Match nothing instead: a missing result is recoverable, wrong data
+                // in a Product Carbon Footprint is not.
+                writerFilter = " |> filter(fn: (r) => false)";
             }
 
             return $"from(bucket: \"{EscapeFlux(Bucket)}\")"
@@ -210,8 +239,8 @@ namespace Opc.Ua.Data.Processor
                 + $"from(bucket: \"{EscapeFlux(Bucket)}\")"
                 + " |> range(start: -30d)"
                 + $" |> filter(fn: (r) => r._measurement == \"{EscapeFlux(MetadataMeasurement)}\")"
-                + $" |> filter(fn: (r) => strings.containsStr(v: r.metaName, substr: \"{EscapeFlux(stationName)}\"))"
-                + $" |> filter(fn: (r) => strings.containsStr(v: r.metaName, substr: \"{EscapeFlux(productionLineName)}\"))"
+                + $" |> filter(fn: (r) => strings.containsStr(v: strings.toLower(v: r.metaName), substr: \"{EscapeFlux(stationName.ToLowerInvariant())}\"))"
+                + $" |> filter(fn: (r) => strings.containsStr(v: strings.toLower(v: r.metaName), substr: \"{EscapeFlux(productionLineName.ToLowerInvariant())}\"))"
                 + " |> keep(columns: [\"datasetWriterId\"])"
                 + " |> group()"
                 + " |> distinct(column: \"datasetWriterId\")";
@@ -234,6 +263,13 @@ namespace Opc.Ua.Data.Processor
             catch (Exception ex)
             {
                 Console.WriteLine("GetWriters: " + ex.Message);
+            }
+
+            if (writers.Count == 0)
+            {
+                // Without this the caller silently does nothing and the pod logs stay empty,
+                // which makes a schema mismatch very hard to diagnose.
+                Console.WriteLine($"GetWriters: no dataset writers found for station '{stationName}' on production line '{productionLineName}' in measurement '{MetadataMeasurement}'. Check that the metaName tag contains both names.");
             }
 
             return writers;

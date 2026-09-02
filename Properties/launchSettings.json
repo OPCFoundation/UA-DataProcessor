@@ -1,10 +1,66 @@
 {
   "profiles": {
     "UA-DataProcessor": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "environmentVariables": {
+        "UA_CLOUD_LIBRARY_URL": "",
+        "UA_CLOUD_LIBRARY_USERNAME": "",
+        "UA_CLOUD_LIBRARY_PASSWORD": "",
+        "ADX_HOST": "",
+        "ADX_DB": "",
+        "ADX_APPLICATION_ID": "",
+        "ADX_TENANT_ID": "",
+        "DYNAMICS_ENDPOINT_URL": "",
+        "DYNAMICS_CLIENT_ID": "",
+        "DYNAMICS_CLIENT_PASSWORD": "",
+        "DYNAMICS_TENANT_ID": "",
+        "DYNAMICS_ENVIRONMENT_ID": "",
+        "DYNAMICS_COMPANY_NAME": "",
+        "DYNAMICS_PRODUCT_NAME": "",
+        "DYNAMICS_BATCH_NAME": "",
+        "WATTTIME_USER": "",
+        "WATTTIME_PASSWORD": "",
+        "INFLUX_TOKEN": "",
+        "INFLUX_URL": "http://influxdb.default.svc.cluster.local:8086",
+        "INFLUX_ORG": "iot",
+        "INFLUX_BUCKET": "mqtt",
+        "INFLUX_MEASUREMENT": "opcua_pubsub",
+        "INFLUX_METADATA_MEASUREMENT": "opcua_metadata",
+        "INFLUX_FIELD_PREFIX": "Payload_",
+        "INFLUX_FIELD_SUFFIX": "_Value",
+        "INFLUX_TIMEOUT_SECONDS": "30"
+      }
     },
     "Container (Dockerfile)": {
-      "commandName": "Docker"
+      "commandName": "Docker",
+      "environmentVariables": {
+        "UA_CLOUD_LIBRARY_URL": "",
+        "UA_CLOUD_LIBRARY_USERNAME": "",
+        "UA_CLOUD_LIBRARY_PASSWORD": "",
+        "ADX_HOST": "",
+        "ADX_DB": "",
+        "ADX_APPLICATION_ID": "",
+        "ADX_TENANT_ID": "",
+        "DYNAMICS_ENDPOINT_URL": "",
+        "DYNAMICS_CLIENT_ID": "",
+        "DYNAMICS_CLIENT_PASSWORD": "",
+        "DYNAMICS_TENANT_ID": "",
+        "DYNAMICS_ENVIRONMENT_ID": "",
+        "DYNAMICS_COMPANY_NAME": "",
+        "DYNAMICS_PRODUCT_NAME": "",
+        "DYNAMICS_BATCH_NAME": "",
+        "WATTTIME_USER": "",
+        "WATTTIME_PASSWORD": "",
+        "INFLUX_TOKEN": "",
+        "INFLUX_URL": "http://influxdb.default.svc.cluster.local:8086",
+        "INFLUX_ORG": "iot",
+        "INFLUX_BUCKET": "mqtt",
+        "INFLUX_MEASUREMENT": "opcua_pubsub",
+        "INFLUX_METADATA_MEASUREMENT": "opcua_metadata",
+        "INFLUX_FIELD_PREFIX": "Payload_",
+        "INFLUX_FIELD_SUFFIX": "_Value",
+        "INFLUX_TIMEOUT_SECONDS": "30"
+      }
     }
   }
 }
