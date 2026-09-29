@@ -58,6 +58,12 @@ namespace Opc.Ua.Data.Processor
             // write the values to a JSON file
             Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText("./BatteryPassV6Values.json"));
             values["i=5"] = DateTime.UtcNow.ToString();
+            // EconomicOperatorId. Set here rather than relying on the template file:
+            // the Cloud Library refuses to issue a signed credential for a passport
+            // naming an operator other than its own Dpp:Esdc:EconomicOperatorId, and
+            // compares the two with StringComparison.Ordinal. Keeping it in code
+            // means it cannot drift out of sync with a stale template.
+            values["i=6"] = "urn:uacl:opcfoundation";
             values["i=12"] = serialNumber;
             values["i=15"] = serialNumber.Substring(0, 19);
             values["i=16"] = serialNumber.Substring(0, 14) + "001";

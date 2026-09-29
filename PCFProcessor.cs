@@ -119,7 +119,12 @@ namespace Opc.Ua.Data.Processor
                 { "i=3", "1.0" },                       // DppSchemaVersion
                 { "i=4", "Released" },                  // DppStatus
                 { "i=5", DateTime.UtcNow.ToString() },  // LastUpdate
-                { "i=6", "OPC Foundation" },            // EconomicOperatorId
+                // EconomicOperatorId. The Cloud Library refuses to issue a signed
+                // credential for a passport naming an operator other than its own
+                // Dpp:Esdc:EconomicOperatorId, and compares the two with
+                // StringComparison.Ordinal - so this string must match that setting
+                // exactly, including the urn:uacl: prefix.
+                { "i=6", "urn:uacl:opcfoundation" },
                 { "i=11", "GHG Protocol" },             // PCFCalculationMethod
                 { "i=12", pcf.ToString() },             // PCFCO2eq
                 { "i=13", serialNumber.ToString() },    // PCFReferenceValueForCalculation
