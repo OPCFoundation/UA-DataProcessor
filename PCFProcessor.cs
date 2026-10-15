@@ -21,14 +21,10 @@ namespace Opc.Ua.Data.Processor
         private readonly ADXDataService _adxDataService = new ADXDataService();
         private readonly InfluxDataService _influxDataService = new InfluxDataService();
         private readonly DynamicsDataService _dynamicsDataService = new DynamicsDataService();
-        private readonly HttpClient _webClient = new HttpClient()
-        {
-            BaseAddress = new Uri(Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_URL")),
-            DefaultRequestHeaders =
-            {
-                Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_USERNAME") + ":" + Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_PASSWORD"))))
-            }
-        };
+        private const string NodesetFile = "./CarbonFootprint.NodeSet2.xml";
+
+        private readonly CloudLibraryClient _cloudLibraryClient = new CloudLibraryClient();
+        private readonly string _nodesetIdentifier;
 
         public PCFProcessor()
         {
@@ -42,6 +38,8 @@ namespace Opc.Ua.Data.Processor
             }
 
             _dynamicsDataService.Connect();
+
+            _nodesetIdentifier = _cloudLibraryClient.EnsureNodesetExists(NodesetFile, "CarbonFootprint", "Product Carbon Footprint Digital Product Passport");
         }
 
         public void Process()
@@ -111,61 +109,30 @@ namespace Opc.Ua.Data.Processor
 
         private void PersistInCloudLibrary(string productionLineName, double serialNumber, float pcf)
         {
-            string dppName = "CarbonFootprintAAS_" + productionLineName + "_" + serialNumber.ToString();
+            if (_nodesetIdentifier == null)
+            {
+                return;
+            }
 
-            // write the values to a JSON file
+            string dppName = "CarbonFootprint_" + productionLineName + "_" + serialNumber.ToString();
+
             Dictionary<string, string> values = new() {
-                { "i=2", productionLineName + "_" + serialNumber.ToString() }, // UniqueProductIdentifier
-                { "i=3", "1.0" },                       // DppSchemaVersion
-                { "i=4", "Released" },                  // DppStatus
-                { "i=5", DateTime.UtcNow.ToString() },  // LastUpdate
+                { "i=3", productionLineName + "_" + serialNumber.ToString() }, // UniqueProductIdentifier
+                { "i=5", "1.0" },                       // DppSchemaVersion
+                { "i=6", "Published" },                 // DppStatus
+                { "i=7", DateTime.UtcNow.ToString("o") }, // LastUpdated
                 // EconomicOperatorId. The Cloud Library refuses to issue a signed
                 // credential for a passport naming an operator other than its own
                 // Dpp:Esdc:EconomicOperatorId, and compares the two with
                 // StringComparison.Ordinal - so this string must match that setting
                 // exactly, including the urn:uacl: prefix.
-                { "i=6", "urn:uacl:opcfoundation" },
-                { "i=11", "GHG Protocol" },             // PCFCalculationMethod
-                { "i=12", pcf.ToString() },             // PCFCO2eq
-                { "i=13", serialNumber.ToString() },    // PCFReferenceValueForCalculation
-                { "i=14", "gCO2" },                     // PCFQuantityOfMeasureForCalculation
-                { "i=15", "Production & Usage" },       // PCFLifeCyclePhase
-                { "i=16", "Scope 2 & 3 Emissions" },    // ExplanatoryStatement
-                { "i=21", productionLineName },         // PCFGoodsAddressHandover.CityTown
-                { "i=23", DateTime.UtcNow.ToString() }  // PublicationDate
+                { "i=8", "urn:uacl:opcfoundation" },
+                { "i=19", "GHG Protocol" },             // PCFCalculationMethod.Value
+                { "i=23", pcf.ToString() },             // PCFCO2eq.Value
+                { "i=31", "gCO2" }                      // PCFQuantityOfMeasureForCalculation.Value
             };
 
-            UANameSpace nameSpace = new() {
-                Title = dppName,
-                License = "MIT",
-                CopyrightText = "OPC Foundation",
-                Description = "Sample PCF for Digital Twin Consortium production line simulation"
-            };
-            nameSpace.Nodeset.NodesetXml = File.ReadAllText("./CarbonFootprintAAS.NodeSet2.xml")
-                .Replace("CarbonFootprintAAS", dppName)
-                .Replace("PublicationDate=\"2026-03-25T00:00:00Z\"", "PublicationDate=\"" + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") + "\"");
-
-            var url = QueryHelpers.AddQueryString(
-                _webClient.BaseAddress.AbsoluteUri + "infomodel/upload",
-                new Dictionary<string, string> {
-                    ["overwrite"] = "true",
-                    ["values"] = JsonConvert.SerializeObject(values)
-                }
-            );
-
-            HttpResponseMessage response = _webClient.Send(new HttpRequestMessage(HttpMethod.Put, new Uri(url)) {
-                Content = new StringContent(JsonConvert.SerializeObject(nameSpace),
-                Encoding.UTF8, "application/json")
-            });
-
-            if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine("Error uploading PCF to Cloud Library: " + response.StatusCode.ToString());
-            }
-            else
-            {
-                Console.WriteLine("Successfully uploaded PCF to Cloud Library for " + dppName);
-            }
+            _cloudLibraryClient.UploadPublishedValueSet(NodesetFile, _nodesetIdentifier, dppName, "Sample PCF for Digital Twin Consortium production line simulation", values);
         }
 
         private float RetrieveScope3Emissions()

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2026-10-15T17:14:24.9021675Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+  <NamespaceUris>
+    <Uri>http://opcfoundation.org/UA/CarbonFootprint/</Uri>
+    <Uri>http://opcfoundation.org/UA/DigitalProductPassport/</Uri>
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri="http://opcfoundation.org/UA/CarbonFootprint/" Version="0.9.0" PublicationDate="2026-10-15T00:00:00Z">
+      <RequiredModel ModelUri="http://opcfoundation.org/UA/DigitalProductPassport/" Version="1.0.0" />
+    </Model>
+  </Models>
+  <UAObject NodeId="ns=1;i=1" BrowseName="1:DigitalProductPassport">
+    <DisplayName Locale="en">DigitalProductPassport</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46">ns=1;i=2</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=3</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=4</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=5</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=6</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=7</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=8</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=9</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=10</Reference>
+      <Reference ReferenceType="i=35" IsForward="false">i=85</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=29</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=2" BrowseName="2:DigitalProductPassportId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">DigitalProductPassportId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">http://opcfoundation.org/UA/CarbonFootprint/</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=3" BrowseName="2:UniqueProductIdentifier" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">UniqueProductIdentifier</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=4" BrowseName="2:Granularity" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="ns=2;i=124" AccessLevel="3">
+    <DisplayName Locale="en">Granularity</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">0</Int32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=5" BrowseName="2:DppSchemaVersion" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">DppSchemaVersion</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=6" BrowseName="2:DppStatus" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">DppStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=7" BrowseName="2:LastUpdated" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=13" AccessLevel="3">
+    <DisplayName Locale="en">LastUpdated</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <DateTime xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">0001-01-01T00:00:00</DateTime>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=8" BrowseName="2:EconomicOperatorId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">EconomicOperatorId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=9" BrowseName="2:FacilityId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=1" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">FacilityId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=1</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=10" BrowseName="1:CarbonFootprint" ParentNodeId="ns=1;i=1">
+    <DisplayName Locale="en">CarbonFootprint</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46">ns=1;i=11</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=16</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=20</Reference>
+      <Reference ReferenceType="i=47">ns=1;i=28</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=19</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=1</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=11" BrowseName="2:ElementId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=10" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ElementId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=10</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">ProductCarbonFootprint</String>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=16" BrowseName="1:PCFCalculationMethod" ParentNodeId="ns=1;i=10">
+    <DisplayName Locale="en">PCFCalculationMethod</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46">ns=1;i=17</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=19</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=12</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=17" BrowseName="2:ElementId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=16" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ElementId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=16</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">PCFCalculationMethod</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=19" BrowseName="2:Value" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=16" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">Value</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=16</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=20" BrowseName="1:PCFCO2eq" ParentNodeId="ns=1;i=10">
+    <DisplayName Locale="en">PCFCO2eq</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46">ns=1;i=21</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=23</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=12</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=21" BrowseName="2:ElementId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=20" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ElementId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=20</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">PCFCO2eq</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=23" BrowseName="2:Value" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=20" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">Value</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=20</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=28" BrowseName="1:PCFQuantityOfMeasureForCalculation" ParentNodeId="ns=1;i=10">
+    <DisplayName Locale="en">PCFQuantityOfMeasureForCalculation</DisplayName>
+    <References>
+      <Reference ReferenceType="i=46">ns=1;i=29</Reference>
+      <Reference ReferenceType="i=46">ns=1;i=31</Reference>
+      <Reference ReferenceType="i=40">ns=2;i=12</Reference>
+      <Reference ReferenceType="i=47" IsForward="false">ns=1;i=10</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId="ns=1;i=29" BrowseName="2:ElementId" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=28" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">ElementId</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=28</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">PCFQuantityOfMeasureForCalculation</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=31" BrowseName="2:Value" WriteMask="2097152" UserWriteMask="2097152" ParentNodeId="ns=1;i=28" DataType="i=12" AccessLevel="3">
+    <DisplayName Locale="en">Value</DisplayName>
+    <References>
+      <Reference ReferenceType="i=40">i=68</Reference>
+      <Reference ReferenceType="i=46" IsForward="false">ns=1;i=28</Reference>
+    </References>
+    <Value>
+      <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+    </Value>
+  </UAVariable>
+</UANodeSet>

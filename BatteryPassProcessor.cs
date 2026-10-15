@@ -10,18 +10,16 @@ namespace Opc.Ua.Data.Processor
     public class BatteryPassProcessor
     {
         private readonly ADXDataService _adxDataService = new ADXDataService();
-        private readonly HttpClient _webClient = new HttpClient()
-        {
-            BaseAddress = new Uri(Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_URL")),
-            DefaultRequestHeaders =
-            {
-                Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_USERNAME") + ":" + Environment.GetEnvironmentVariable("UA_CLOUD_LIBRARY_PASSWORD"))))
-            }
-        };
+        private const string NodesetFile = "./BatteryPassV6.NodeSet2.xml";
+
+        private readonly CloudLibraryClient _cloudLibraryClient = new CloudLibraryClient();
+        private readonly string _nodesetIdentifier;
 
         public BatteryPassProcessor()
         {
             _adxDataService.Connect();
+
+            _nodesetIdentifier = _cloudLibraryClient.EnsureNodesetExists(NodesetFile, "BatteryPassV6", "Battery Passport V6 Digital Product Passport");
         }
 
         public void Process()
@@ -53,57 +51,33 @@ namespace Opc.Ua.Data.Processor
 
         private void PersistInCloudLibrary(string productionLineName, string serialNumber, Dictionary<string, object> eolData)
         {
-            string dppName = "BatteryPassV6_" + productionLineName + "_" + serialNumber.ToString();
+            if (_nodesetIdentifier == null)
+            {
+                return;
+            }
 
-            // write the values to a JSON file
+            string dppName = "BatteryPassV6_" + productionLineName + "_" + serialNumber;
+
             Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText("./BatteryPassV6Values.json"));
-            values["i=5"] = DateTime.UtcNow.ToString();
+            values["ns=1;i=5"] = "1.0";                                       // DppSchemaVersion
+            values["ns=1;i=6"] = "Published";                                 // DppStatus
+            values["ns=1;i=7"] = DateTime.UtcNow.ToString("o"); // LastUpdated
             // EconomicOperatorId. Set here rather than relying on the template file:
             // the Cloud Library refuses to issue a signed credential for a passport
             // naming an operator other than its own Dpp:Esdc:EconomicOperatorId, and
             // compares the two with StringComparison.Ordinal. Keeping it in code
             // means it cannot drift out of sync with a stale template.
-            values["i=6"] = "urn:uacl:opcfoundation";
-            values["i=12"] = serialNumber;
-            values["i=15"] = serialNumber.Substring(0, 19);
-            values["i=16"] = serialNumber.Substring(0, 14) + "001";
-            values["i=37"] = eolData.Values.ElementAt(1).ToString(); // height
-            values["i=40"] = eolData.Values.ElementAt(3).ToString(); // length
-            values["i=43"] = eolData.Values.ElementAt(5).ToString(); // width
-            values["i=46"] = eolData.Values.ElementAt(7).ToString(); // weight
+            values["ns=1;i=8"] = "urn:uacl:opcfoundation";
+            values["ns=1;i=3"] = serialNumber;                                // UniqueProductIdentifier
+            values["ns=1;i=26"] = serialNumber;                               // identification.idDmc
+            values["ns=1;i=45"] = serialNumber.Substring(0, 19);              // identification.serialInformation.value
+            values["ns=1;i=58"] = serialNumber.Substring(0, 14) + "001";      // identification.batchInformation.value
+            values["ns=1;i=153"] = eolData.Values.ElementAt(1).ToString();    // physicalDimension.height
+            values["ns=1;i=163"] = eolData.Values.ElementAt(3).ToString();    // physicalDimension.length
+            values["ns=1;i=173"] = eolData.Values.ElementAt(5).ToString();    // physicalDimension.width
+            values["ns=1;i=183"] = eolData.Values.ElementAt(7).ToString();    // physicalDimension.weight
 
-            UANameSpace nameSpace = new() {
-                Title = dppName,
-                License = "MIT",
-                CopyrightText = "OPC Foundation",
-                Description = "Sample BPP for OPCF / Fraunhofer FFB production line simulation"
-            };
-
-            nameSpace.Nodeset.NodesetXml = File.ReadAllText("./BatteryPassV6.NodeSet2.xml")
-                .Replace("BatteryPassV6", dppName)
-                .Replace("PublicationDate=\"2026-03-25T00:00:00Z\"", "PublicationDate=\"" + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") + "\"");
-
-            var url = QueryHelpers.AddQueryString(
-                _webClient.BaseAddress.AbsoluteUri + "infomodel/upload",
-                new Dictionary<string, string> {
-                    ["overwrite"] = "true",
-                    ["values"] = JsonConvert.SerializeObject(values)
-                }
-            );
-
-            HttpResponseMessage response = _webClient.Send(new HttpRequestMessage(HttpMethod.Put, new Uri(url)) {
-                Content = new StringContent(JsonConvert.SerializeObject(nameSpace),
-                Encoding.UTF8, "application/json")
-            });
-
-            if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine("Error uploading BatteryPass to Cloud Library: " + response.StatusCode.ToString());
-            }
-            else
-            {
-                Console.WriteLine("Successfully uploaded BatteryPass to Cloud Library for " + dppName);
-            }
+            _cloudLibraryClient.UploadPublishedValueSet(NodesetFile, _nodesetIdentifier, dppName, "Sample BPP for OPCF / Fraunhofer FFB production line simulation", values);
         }
 
         private float FindPcf(ErpNode node)

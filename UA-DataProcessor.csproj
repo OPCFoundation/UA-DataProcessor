@@ -12,14 +12,17 @@
 
   <ItemGroup>
     <None Remove="BatteryPassV6Values.json" />
-    <None Remove="CarbonFootprintAAS.NodeSet2.xml" />
+    <None Remove="Opc.Ua.DigitalProductPassport.NodeSet2.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="CarbonFootprintAAS.NodeSet2.xml">
+    <Content Include="CarbonFootprint.NodeSet2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="BatteryPassV6.NodeSet2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Opc.Ua.DigitalProductPassport.NodeSet2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -34,9 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="BatteryPassV6Values.json">
+    <Content Include="BatteryPassV6Values.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
 
 </Project>
