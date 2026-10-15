@@ -19,6 +19,7 @@ namespace Opc.Ua.Data.Processor
         {
             _adxDataService.Connect();
 
+            _cloudLibraryClient.EnsureDppBaseNodesetExists();
             _nodesetIdentifier = _cloudLibraryClient.EnsureNodesetExists(NodesetFile, "BatteryPassV6", "Battery Passport V6 Digital Product Passport");
         }
 

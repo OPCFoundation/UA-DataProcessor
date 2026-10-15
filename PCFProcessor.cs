@@ -39,6 +39,7 @@ namespace Opc.Ua.Data.Processor
 
             _dynamicsDataService.Connect();
 
+            _cloudLibraryClient.EnsureDppBaseNodesetExists();
             _nodesetIdentifier = _cloudLibraryClient.EnsureNodesetExists(NodesetFile, "CarbonFootprint", "Product Carbon Footprint Digital Product Passport");
         }
 

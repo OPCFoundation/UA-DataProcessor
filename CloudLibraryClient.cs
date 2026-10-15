@@ -24,6 +24,14 @@ namespace Opc.Ua.Data.Processor
 
         private record ValueSetSummary(Guid Id, string NodesetIdentifier, string Name, bool IsPublished);
 
+        private const string DppBaseNodesetFile = "./Opc.Ua.DigitalProductPassport.NodeSet2.xml";
+
+        // makes sure the Digital Product Passport base nodeset, which all DPP nodesets depend on, is available in the Cloud Library
+        public string EnsureDppBaseNodesetExists()
+        {
+            return EnsureNodesetExists(DppBaseNodesetFile, "DigitalProductPassport", "OPC UA Digital Product Passport base model");
+        }
+
         // makes sure the nodeset is available in the Cloud Library (uploading it if it isn't) and returns its identifier
         public string EnsureNodesetExists(string nodesetFile, string title, string description)
         {
