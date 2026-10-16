@@ -70,6 +70,8 @@ namespace Opc.Ua.Data.Processor
         // creates (or reuses) a value set for the nodeset, writes the values into it and publishes it as a DPP
         public bool UploadPublishedValueSet(string nodesetFile, string nodesetIdentifier, string name, string description, Dictionary<string, string> values)
         {
+            Console.WriteLine(DateTime.UtcNow.ToString("o") + " Uploading DPP " + name + " to Cloud Library...");
+
             Guid? valueSetId = CreateOrGetValueSet(nodesetIdentifier, name, description);
             if (valueSetId == null)
             {
@@ -97,7 +99,7 @@ namespace Opc.Ua.Data.Processor
                 return false;
             }
 
-            Console.WriteLine("Successfully uploaded and published value set " + name + " to Cloud Library");
+            Console.WriteLine(DateTime.UtcNow.ToString("o") + " Successfully uploaded and published DPP " + name + " (value set " + valueSetId + ", " + values.Count + " values) to Cloud Library");
             return true;
         }
 
