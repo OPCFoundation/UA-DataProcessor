@@ -119,6 +119,7 @@ namespace Opc.Ua.Data.Processor
 
             Dictionary<string, string> values = new() {
                 { "i=3", productionLineName + "_" + serialNumber.ToString() }, // UniqueProductIdentifier
+                { "i=4", "2" },                         // Granularity (GranularityEnumeration: 2 = Item)
                 { "i=5", "1.0" },                       // DppSchemaVersion
                 { "i=6", "Published" },                 // DppStatus
                 { "i=7", DateTime.UtcNow.ToString("o") }, // LastUpdated
@@ -128,6 +129,7 @@ namespace Opc.Ua.Data.Processor
                 // StringComparison.Ordinal - so this string must match that setting
                 // exactly, including the urn:uacl: prefix.
                 { "i=8", "urn:uacl:opcfoundation" },
+                { "i=9", productionLineName },          // FacilityId
                 { "i=19", "GHG Protocol" },             // PCFCalculationMethod.Value
                 { "i=23", pcf.ToString() },             // PCFCO2eq.Value
                 { "i=31", "gCO2" }                      // PCFQuantityOfMeasureForCalculation.Value

@@ -93,7 +93,7 @@ namespace Opc.Ua.Data.Processor
             response = _webClient.Send(new HttpRequestMessage(HttpMethod.Post, "valuesets/" + valueSetId + "/publish"));
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Error publishing value set " + name + ": " + response.StatusCode.ToString());
+                Console.WriteLine("Error publishing value set " + name + ": " + response.StatusCode.ToString() + " " + response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
                 return false;
             }
 
