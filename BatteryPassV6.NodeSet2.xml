@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2026-10-09T13:38:52.4997945Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
   <NamespaceUris>
     <Uri>http://catena-x.org/UA/urn_samm_io_catenax_battery_battery_pass_6_1_0_BatteryPass/</Uri>
@@ -15109,7 +15109,7 @@
       <String xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd" />
     </Value>
   </UAVariable>
-  <UAObject NodeId="ns=1;i=1" BrowseName="1:DigitalProductPassport">
+  <UAObject NodeId="ns=1;i=1" BrowseName="1:DigitalProductPassport" ParentNodeId="i=85">
     <DisplayName Locale="en">DigitalProductPassport</DisplayName>
     <References>
       <Reference ReferenceType="i=46">ns=1;i=2</Reference>
