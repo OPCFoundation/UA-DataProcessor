@@ -25,6 +25,7 @@ namespace Opc.Ua.Data.Processor
 
         private readonly CloudLibraryClient _cloudLibraryClient = new CloudLibraryClient();
         private readonly string _nodesetIdentifier;
+        private readonly Dictionary<string, double> _lastProcessedSerialNumber = new();
 
         public PCFProcessor()
         {
@@ -65,40 +66,33 @@ namespace Opc.Ua.Data.Processor
                 if ((currentCarbonIntensity != null) && (currentCarbonIntensity.data.Length > 0))
                 {
                     // check if a new product was produced (last machine in the production line, i.e. packaging, is in state 2 ("done") with a passed QA)
-                    // and get the products serial number and energy consumption at that time
+                    // and get the latest finished product's serial number
                     Dictionary<string, object> latestProductProduced = ADXQueryForSpecificValue("packaging", productionLineName, "Status", 2);
-                    if ((latestProductProduced != null) && (latestProductProduced.Count > 0))
+                    if ((latestProductProduced != null) && latestProductProduced.ContainsKey("Timestamp"))
                     {
                         Dictionary<string, object> serialNumberResult = ADXQueryForSpecificTime("packaging", productionLineName, "ProductSerialNumber", ((DateTime)latestProductProduced["Timestamp"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
-                        double serialNumber = (double)serialNumberResult["OPCUANodeValue"];
+                        if (!TryGetNodeValue(serialNumberResult, out double latestSerialNumber))
+                        {
+                            Console.WriteLine("CalcPCFForProductionLine: no serial number found at packaging for " + productionLineName);
+                            return;
+                        }
 
-                        Dictionary<string, object> timeItWasProducedPackaging = ADXQueryForSpecificValue("packaging", productionLineName, "ProductSerialNumber", serialNumber);
-                        Dictionary<string, object> energyPackaging = ADXQueryForSpecificTime("packaging", productionLineName, "EnergyConsumption", ((DateTime)timeItWasProducedPackaging["Timestamp"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
-
-                        // check each other machine for the time when the product with this serial number was in the machine and get its energy comsumption at that time
-                        Dictionary<string, object> timeItWasProducedTest = ADXQueryForSpecificValue("test", productionLineName, "ProductSerialNumber", serialNumber);
-                        Dictionary<string, object> energyTest = ADXQueryForSpecificTime("test", productionLineName, "EnergyConsumption", ((DateTime)timeItWasProducedTest["Timestamp"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
-
-                        Dictionary<string, object> timeItWasProducedAssembly = ADXQueryForSpecificValue("assembly", productionLineName, "ProductSerialNumber", serialNumber);
-                        Dictionary<string, object> energyAssembly = ADXQueryForSpecificTime("assembly", productionLineName, "EnergyConsumption", ((DateTime)timeItWasProducedAssembly["Timestamp"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
-
-                        // calculate the total energy consumption for the product by summing up all the machines' energy consumptions (in Ws), divide by 3600 to get seconds and multiply by the ideal cycle time (which is in seconds)
-                        double energyTotal = ((double)energyAssembly["OPCUANodeValue"] + (double)energyTest["OPCUANodeValue"] + (double)energyPackaging["OPCUANodeValue"]) / 3600 * idealCycleTime;
-
-                        // we set scope 1 emissions to 0
-                        float scope1Emissions = 0.0f;
-
-                        // finally calculate the scope 2 product carbon footprint by multiplying the full energy consumption by the current carbon intensity
-                        float scope2Emissions = (float)energyTotal * currentCarbonIntensity.data[0].intensity.actual;
+                        // products finish faster than one processing cycle, so process every serial number since the last one we processed
+                        double firstSerialNumber = _lastProcessedSerialNumber.TryGetValue(productionLineName, out double lastProcessed) ? lastProcessed + 1 : latestSerialNumber;
+                        if (firstSerialNumber > latestSerialNumber)
+                        {
+                            return;
+                        }
 
                         // we get scope 3 emissions from Dynamics as part of the Bill of Material (BoM)
                         float scope3Emissions = RetrieveScope3Emissions();
 
-                        // finally calculate our PCF
-                        float pcf = scope1Emissions + scope2Emissions + scope3Emissions;
+                        for (double serialNumber = firstSerialNumber; serialNumber <= latestSerialNumber; serialNumber++)
+                        {
+                            CalcPCFForProduct(productionLineName, serialNumber, idealCycleTime, currentCarbonIntensity.data[0].intensity.actual, scope3Emissions);
+                        }
 
-                        // persist in Cloud Library
-                        PersistInCloudLibrary(productionLineName, serialNumber, pcf);
+                        _lastProcessedSerialNumber[productionLineName] = latestSerialNumber;
                     }
                 }
             }
@@ -106,6 +100,66 @@ namespace Opc.Ua.Data.Processor
             {
                 Console.WriteLine("CalcPCFForProductionLine: " + ex.Message);
             }
+        }
+
+        private void CalcPCFForProduct(string productionLineName, double serialNumber, int idealCycleTime, float carbonIntensity, float scope3Emissions)
+        {
+            // check each machine for the time when the product with this serial number was in the machine and get its energy comsumption at that time
+            double energyTotal = 0;
+            foreach (string station in new[] { "assembly", "test", "packaging" })
+            {
+                Dictionary<string, object> timeItWasProduced = ADXQueryForSpecificValue(station, productionLineName, "ProductSerialNumber", serialNumber);
+                if ((timeItWasProduced == null) || !timeItWasProduced.ContainsKey("Timestamp"))
+                {
+                    if (station == "assembly")
+                    {
+                        Console.WriteLine($"CalcPCFForProduct: serial number {serialNumber} not found at {station} on {productionLineName}, skipping product.");
+                    }
+                    else
+                    {
+                        // stations can mark a product with bad quality, after which the MES abandons its serial number and it never reaches the next station
+                        Console.WriteLine($"CalcPCFForProduct: serial number {serialNumber} did not reach {station} on {productionLineName} (abandoned by the MES due to bad quality), no PCF created.");
+                    }
+
+                    return;
+                }
+
+                Dictionary<string, object> energy = ADXQueryForSpecificTime(station, productionLineName, "EnergyConsumption", ((DateTime)timeItWasProduced["Timestamp"]).ToString("yyyy-MM-dd HH:mm:ss"), idealCycleTime);
+                if (!TryGetNodeValue(energy, out double energyValue))
+                {
+                    Console.WriteLine($"CalcPCFForProduct: no energy consumption found at {station} for serial number {serialNumber} on {productionLineName}, skipping product.");
+                    return;
+                }
+
+                energyTotal += energyValue;
+            }
+
+            // calculate the total energy consumption for the product by summing up all the machines' energy consumptions (in Ws), divide by 3600 to get seconds and multiply by the ideal cycle time (which is in seconds)
+            energyTotal = energyTotal / 3600 * idealCycleTime;
+
+            // we set scope 1 emissions to 0
+            float scope1Emissions = 0.0f;
+
+            // finally calculate the scope 2 product carbon footprint by multiplying the full energy consumption by the current carbon intensity
+            float scope2Emissions = (float)energyTotal * carbonIntensity;
+
+            // finally calculate our PCF
+            float pcf = scope1Emissions + scope2Emissions + scope3Emissions;
+
+            // persist in Cloud Library
+            PersistInCloudLibrary(productionLineName, serialNumber, pcf);
+        }
+
+        private static bool TryGetNodeValue(Dictionary<string, object> result, out double value)
+        {
+            value = 0;
+            if ((result != null) && result.TryGetValue("OPCUANodeValue", out object nodeValue) && (nodeValue != null))
+            {
+                value = Convert.ToDouble(nodeValue, CultureInfo.InvariantCulture);
+                return true;
+            }
+
+            return false;
         }
 
         private void PersistInCloudLibrary(string productionLineName, double serialNumber, float pcf)
@@ -203,7 +257,7 @@ namespace Opc.Ua.Data.Processor
         {
             if (UseInfluxDB)
             {
-                return InfluxQueryForSpecificValue(stationName, productionLineName, valueToQuery);
+                return InfluxQueryForSpecificValue(stationName, productionLineName, valueToQuery, desiredValue);
             }
 
             string query = "opcua_metadata_lkv\r\n"
@@ -214,6 +268,7 @@ namespace Opc.Ua.Data.Processor
                          + "    | where Timestamp > now(- 1h)\r\n"
                          + ") on Subject\r\n"
                          + "| distinct Timestamp, OPCUANodeValue = todouble(Value)\r\n"
+                         + "| where OPCUANodeValue == " + desiredValue.ToString("R", CultureInfo.InvariantCulture) + "\r\n"
                          + "| sort by Timestamp desc";
 
             return _adxDataService.RunQuery(query);
@@ -240,9 +295,9 @@ namespace Opc.Ua.Data.Processor
             return _adxDataService.RunQuery(query);
         }
 
-        private Dictionary<string, object> InfluxQueryForSpecificValue(string stationName, string productionLineName, string valueToQuery)
+        private Dictionary<string, object> InfluxQueryForSpecificValue(string stationName, string productionLineName, string valueToQuery, double desiredValue)
         {
-            string query = _influxDataService.BuildLastKnownValueQuery(stationName, productionLineName, valueToQuery);
+            string query = _influxDataService.BuildSpecificValueQuery(stationName, productionLineName, valueToQuery, desiredValue);
 
             return NormalizeNodeValue(_influxDataService.RunQuery(query));
         }

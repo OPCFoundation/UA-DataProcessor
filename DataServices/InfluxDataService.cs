@@ -175,6 +175,20 @@ namespace Opc.Ua.Data.Processor
         }
 
         /// <summary>
+        /// Builds a Flux query returning the last time within the last hour at which an OPC UA variable
+        /// published by the given station of the given production line had the given value.
+        /// </summary>
+        public string BuildSpecificValueQuery(string stationName, string productionLineName, string valueToQuery, double desiredValue)
+        {
+            return BuildTelemetryQuery(stationName, productionLineName,
+                $" |> filter(fn: (r) => r._field == \"{EscapeFlux(ToFieldName(valueToQuery))}\")"
+                + $" |> filter(fn: (r) => float(v: r._value) == {desiredValue.ToString("R", CultureInfo.InvariantCulture)})",
+                "-1h",
+                "now()")
+                + " |> group() |> sort(columns: [\"_time\"]) |> last()";
+        }
+
+        /// <summary>
         /// Builds a Flux query returning the values of an OPC UA variable published by the given
         /// station of the given production line within +/- the ideal cycle time around the given
         /// point in time.
@@ -226,8 +240,16 @@ namespace Opc.Ua.Data.Processor
         /// Returns the datasetWriterIds whose metadata DataSetName contains both the station and the
         /// production line name.
         /// </summary>
+        private readonly Dictionary<string, List<string>> _writerCache = new();
+
         private List<string> GetWriters(string stationName, string productionLineName)
         {
+            string cacheKey = stationName.ToLowerInvariant() + "|" + productionLineName.ToLowerInvariant();
+            if (_writerCache.TryGetValue(cacheKey, out List<string> cached))
+            {
+                return cached;
+            }
+
             List<string> writers = new();
 
             if (_influxClient == null)
@@ -270,6 +292,10 @@ namespace Opc.Ua.Data.Processor
                 // Without this the caller silently does nothing and the pod logs stay empty,
                 // which makes a schema mismatch very hard to diagnose.
                 Console.WriteLine($"GetWriters: no dataset writers found for station '{stationName}' on production line '{productionLineName}' in measurement '{MetadataMeasurement}'. Check that the metaName tag contains both names.");
+            }
+            else
+            {
+                _writerCache[cacheKey] = writers;
             }
 
             return writers;
