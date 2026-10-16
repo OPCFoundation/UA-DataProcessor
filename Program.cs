@@ -34,24 +34,38 @@ namespace Opc.Ua.Data.Processor
     {
         static async Task Main()
         {
+            Log("UA-DataProcessor starting...");
+
+            Log("Initializing PCF processor...");
             PCFProcessor pcfProcessor = new PCFProcessor();
+
+            Log("Initializing Battery Pass processor...");
             BatteryPassProcessor batteryPassProcessor = new BatteryPassProcessor();
+
+            Log("Initialization complete, starting processing loop.");
             while (true)
             {
                 try
                 {
+                    Log("Processing PCF...");
                     pcfProcessor.Process();
 
+                    Log("Processing Battery Pass...");
                     batteryPassProcessor.Process();
 
                     await Task.Delay(5000).ConfigureAwait(false); // Wait 5s before next processing
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error processing data: " + ex.Message);
+                    Log("Error processing data: " + ex.Message);
                     await Task.Delay(1000).ConfigureAwait(false); // Wait 1s before retrying
                 }
             }
+        }
+
+        private static void Log(string message)
+        {
+            Console.WriteLine(DateTime.UtcNow.ToString("o") + " " + message);
         }
     }
 }

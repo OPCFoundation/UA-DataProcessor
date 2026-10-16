@@ -41,6 +41,7 @@ namespace Opc.Ua.Data.Processor
             string identifier = FindNodesetIdentifier(namespaceUri);
             if (identifier != null)
             {
+                Console.WriteLine(DateTime.UtcNow.ToString("o") + " Nodeset " + namespaceUri + " already in Cloud Library (identifier " + identifier + ")");
                 return identifier;
             }
 
