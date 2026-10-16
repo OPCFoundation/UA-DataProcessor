@@ -58,7 +58,7 @@ namespace Opc.Ua.Data.Processor
 
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine("Error uploading nodeset " + namespaceUri + " to Cloud Library: " + response.StatusCode.ToString());
+                Console.WriteLine("Error uploading nodeset " + namespaceUri + " to Cloud Library: " + response.StatusCode.ToString() + " " + response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
                 return null;
             }
 

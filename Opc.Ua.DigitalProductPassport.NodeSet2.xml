@@ -39,13 +39,13 @@
   </Models>
   <Aliases />
   <UADataType NodeId="ns=1;i=124" BrowseName="1:GranularityEnumeration">
-    <DisplayName />
+    <DisplayName>GranularityEnumeration</DisplayName>
     <Category>DPP Base</Category>
     <Documentation>https://reference.opcfoundation.org/DigitalProductPassport/v100/docs/7.1</Documentation>
     <References>
       <Reference ReferenceType="i=45" IsForward="false">i=29</Reference>
     </References>
-    <Definition Name="1:GranularityEnumeration">>
+    <Definition Name="1:GranularityEnumeration">
       <Field Name="Model" Value="0">
         <Description>The DPP applies to all products with a specified model number.</Description>
       </Field>
@@ -58,7 +58,7 @@
     </Definition>
   </UADataType>
   <UAVariable NodeId="ns=1;i=125" BrowseName="EnumStrings" ParentNodeId="ns=1;i=124" DataType="i=21" ValueRank="1" ArrayDimensions="0">
-    <DisplayName />
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <Reference ReferenceType="i=40">i=68</Reference>
       <Reference ReferenceType="i=46" IsForward="false">ns=1;i=124</Reference>
@@ -96,7 +96,7 @@
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=123" BrowseName="1:ElementId" ParentNodeId="ns=1;i=10" DataType="i=12">
-    <DisplayName />
+    <DisplayName>ElementId</DisplayName>
     <References>
       <Reference ReferenceType="i=37">i=78</Reference>
       <Reference ReferenceType="i=40">i=68</Reference>
@@ -348,7 +348,7 @@
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=121" BrowseName="1:Format" ParentNodeId="ns=1;i=120" DataType="i=12">
-    <DisplayName />
+    <DisplayName>Format</DisplayName>
     <References>
       <Reference ReferenceType="i=37">i=78</Reference>
       <Reference ReferenceType="i=40">i=68</Reference>
@@ -356,7 +356,7 @@
     </References>
   </UAVariable>
   <UAVariable NodeId="ns=1;i=122" BrowseName="1:Signature" ParentNodeId="ns=1;i=120" DataType="i=15">
-    <DisplayName />
+    <DisplayName>Signature</DisplayName>
     <References>
       <Reference ReferenceType="i=37">i=78</Reference>
       <Reference ReferenceType="i=40">i=68</Reference>
